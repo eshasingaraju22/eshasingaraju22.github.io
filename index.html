@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esha Singaraju | Portfolio</title>
+    <meta
+      name="description"
+      content="Colorful personal portfolio for Esha Singaraju with work, writing, experience, and speaking."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="theme-home">
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="index.html">ES</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a class="is-active" href="index.html">Home</a>
+          <a href="experience.html">Experience</a>
+          <a href="writing.html">Writing</a>
+          <a href="out-and-about.html">Out &amp; About</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="home-board reveal" aria-label="Homepage board">
+          <div class="home-board-shell">
+            <div class="home-top-grid">
+              <article class="home-card home-intro-card">
+                <h1>Hi, I'm Esha!</h1>
+                <p class="home-copy home-copy-lead">
+                  <span class="world-line">
+                    <span>I’m curious to how the</span>
+                    <img class="world-inline" src="assets/world.png" alt="World graphic" />
+                    <span>works:</span>
+                  </span>
+                </p>
+                <p class="home-copy home-copy-follow">
+                  The systems that shape our lives, the stories we tell about
+                  them, and the tools we build to understand them.
+                </p>
+                <p class="home-copy">
+                  So I write, research, code, and occasionally DJ – making
+                  thoughtful things that feel alive, useful, and a little
+                  unexpected!
+                </p>
+                <p class="home-copy">
+                  I'm currently a Junior at UNC Chapel Hill🐏 pursuing double
+                  majors in Computer Science and Environmental Studies
+                  (Sustainability track).
+                </p>
+              </article>
+
+              <article class="home-card home-photo-wrap">
+                <div class="home-photo-frame">
+                  <img
+                    class="home-photo"
+                    src="assets/headshot.jpeg"
+                    alt="Portrait of Esha Singaraju"
+                  />
+                  <img class="home-photo-overlay" src="assets/frame.png" alt="" />
+                </div>
+              </article>
+
+            </div>
+
+            <div class="home-bottom-grid">
+              <nav class="home-preview-tabs" aria-label="Page previews">
+                <a
+                  class="preview-tab is-active"
+                  href="experience.html"
+                  data-preview="experience"
+                >
+                  <span>01</span>
+                  <strong>Experience</strong>
+                </a>
+                <a
+                  class="preview-tab"
+                  href="writing.html"
+                  data-preview="writing"
+                >
+                  <span>02</span>
+                  <strong>Writing</strong>
+                </a>
+                <a
+                  class="preview-tab"
+                  href="out-and-about.html"
+                  data-preview="out-and-about"
+                >
+                  <span>03</span>
+                  <strong>Out &amp; About</strong>
+                </a>
+              </nav>
+
+              <article class="home-preview-panel" aria-live="polite">
+                <p class="preview-overline" id="preview-overline">Preview</p>
+                <h2 class="preview-title" id="preview-title">Experience</h2>
+                <p class="preview-description" id="preview-description">
+                  Resume-style highlights, leadership roles, projects, and the
+                  work I want people to notice first.
+                </p>
+                <ul class="preview-list" id="preview-list">
+                  <li>leadership and campus involvement</li>
+                  <li>creative and technical projects</li>
+                  <li>skills, timeline, and resume links</li>
+                </ul>
+                <a class="preview-cta preview-cta-experience" id="preview-cta" href="experience.html">Click to see more!</a>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
