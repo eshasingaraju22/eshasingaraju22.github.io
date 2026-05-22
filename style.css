@@ -2130,6 +2130,798 @@ h3 {
   padding: 0.45rem 0.35rem 0.2rem;
 }
 
+.clothesline-page.theme-about-town {
+  background: #dcefff;
+}
+
+.clothesline-page.theme-about-town::before {
+  content: none;
+}
+
+.clothesline-page.theme-about-town::after {
+  content: none;
+}
+
+body.clothesline-page {
+  position: relative;
+  min-height: 220vh;
+  overflow-x: hidden;
+}
+
+body.clothesline-page::before {
+  content: none;
+}
+
+.about-sky-scene {
+  position: absolute;
+  inset: 0;
+  min-height: 220vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-sky-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 249, 212, 0.98) 0%, rgba(255, 237, 158, 0.94) 10%, rgba(255, 223, 116, 0.56) 18%, rgba(255, 223, 116, 0.2) 25%, rgba(255, 223, 116, 0) 34%),
+    linear-gradient(
+      180deg,
+      #ffefbd 0%,
+      #fff7df 9%,
+      #eef8ff 20%,
+      #bfe5ff 43%,
+      #9ad0ff 58%,
+      #99d58e 82%,
+      #6db960 100%
+    );
+}
+
+.scene-sun {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: clamp(12rem, 20vw, 17rem);
+  aspect-ratio: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.scene-sun-core {
+  position: absolute;
+  left: -100%;
+  top: -100%;
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background: #ffc94d;
+  clip-path: inset(50% 0 0 50%);
+  box-shadow: inset -1rem -1rem 0 rgba(215, 145, 48, 0.16);
+}
+
+.scene-sun-ray {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  background: #ffc94d;
+  transform-origin: left center;
+}
+
+.ray-east {
+  left: calc(94% + 0.5rem);
+  top: 27%;
+  width: 2.55rem;
+  height: 0.42rem;
+  transform: rotate(14deg);
+}
+
+.ray-east-soft {
+  left: calc(86% + 0.45rem);
+  top: 47%;
+  width: 2.75rem;
+  height: 0.46rem;
+  transform: rotate(36deg);
+}
+
+.ray-southeast {
+  left: calc(69% + 0.35rem);
+  top: 70%;
+  width: 2.6rem;
+  height: 0.44rem;
+  transform: rotate(54deg);
+}
+
+.ray-south {
+  left: 46%;
+  top: calc(88% + 0.5rem);
+  width: 2.55rem;
+  height: 0.42rem;
+  transform: rotate(73deg);
+}
+
+.ray-south-soft {
+  left: 24%;
+  top: calc(96% + 0.35rem);
+  width: 2.15rem;
+  height: 0.38rem;
+  transform: rotate(87deg);
+}
+
+.scene-cloud {
+  position: absolute;
+  display: block;
+  width: clamp(15rem, 26vw, 23rem);
+  height: auto;
+  opacity: 0.94;
+  filter: drop-shadow(0 1rem 1.45rem rgba(84, 133, 181, 0.16));
+  transform: rotate(var(--cloud-tilt, 0deg));
+  transform-origin: center;
+}
+
+.scene-cloud-one {
+  top: 18%;
+  left: -1%;
+  width: clamp(18rem, 31vw, 28rem);
+  --cloud-tilt: -3deg;
+  --cloud-drift-x: 1.5rem;
+  --cloud-drift-y: -0.35rem;
+  --cloud-tilt-end: 1.6deg;
+}
+
+.scene-cloud-two {
+  top: 27%;
+  right: 3%;
+  width: clamp(16rem, 28vw, 24rem);
+  --cloud-tilt: 2deg;
+  --cloud-drift-x: -1.25rem;
+  --cloud-drift-y: 0.25rem;
+  --cloud-tilt-end: -1.4deg;
+}
+
+.scene-cloud-three {
+  top: 38%;
+  left: 8%;
+  width: clamp(23rem, 38vw, 34rem);
+  opacity: 0.88;
+  --cloud-tilt: -1deg;
+  --cloud-drift-x: 1.1rem;
+  --cloud-drift-y: -0.2rem;
+  --cloud-tilt-end: 1deg;
+}
+
+.scene-cloud-four {
+  top: 10%;
+  right: -1%;
+  width: clamp(10rem, 16vw, 13rem);
+  opacity: 0.76;
+  --cloud-tilt: 5deg;
+  --cloud-drift-x: -0.85rem;
+  --cloud-drift-y: 0.45rem;
+  --cloud-tilt-end: -2deg;
+}
+
+.scene-cloud-five {
+  top: 50%;
+  right: 11%;
+  width: clamp(15rem, 26vw, 23rem);
+  opacity: 0.8;
+  --cloud-tilt: 2deg;
+  --cloud-drift-x: -1.4rem;
+  --cloud-drift-y: 0.15rem;
+  --cloud-tilt-end: -1deg;
+}
+
+.scene-cloud-six {
+  top: 59%;
+  left: -2%;
+  width: clamp(13rem, 22vw, 19rem);
+  opacity: 0.76;
+  --cloud-tilt: -4deg;
+  --cloud-drift-x: 1rem;
+  --cloud-drift-y: -0.15rem;
+  --cloud-tilt-end: 1.4deg;
+}
+
+.scene-cloud-seven {
+  top: 68%;
+  left: 16%;
+  width: clamp(18rem, 31vw, 27rem);
+  opacity: 0.82;
+  --cloud-tilt: 1deg;
+  --cloud-drift-x: 1.2rem;
+  --cloud-drift-y: -0.25rem;
+  --cloud-tilt-end: -0.8deg;
+}
+
+.scene-cloud-eight {
+  top: 77%;
+  right: -2%;
+  width: clamp(11rem, 18vw, 14rem);
+  opacity: 0.68;
+  --cloud-tilt: 6deg;
+  --cloud-drift-x: -0.9rem;
+  --cloud-drift-y: 0.2rem;
+  --cloud-tilt-end: -1.6deg;
+}
+
+.scene-cloud-nine {
+  top: 84%;
+  left: 3%;
+  width: clamp(14rem, 24vw, 20rem);
+  opacity: 0.74;
+  --cloud-tilt: -2deg;
+  --cloud-drift-x: 0.95rem;
+  --cloud-drift-y: -0.2rem;
+  --cloud-tilt-end: 0.9deg;
+}
+
+.scene-cloud-ten {
+  top: 92%;
+  right: 14%;
+  width: clamp(20rem, 33vw, 29rem);
+  opacity: 0.78;
+  --cloud-tilt: 2deg;
+  --cloud-drift-x: -1.1rem;
+  --cloud-drift-y: 0.1rem;
+  --cloud-tilt-end: -1.1deg;
+}
+
+.scene-cloud-eleven {
+  top: 54%;
+  left: 34%;
+  width: clamp(16rem, 27vw, 22rem);
+  opacity: 0.7;
+  --cloud-tilt: 1deg;
+  --cloud-drift-x: 0.85rem;
+  --cloud-drift-y: -0.15rem;
+  --cloud-tilt-end: -0.8deg;
+}
+
+.scene-birds {
+  position: absolute;
+  inset: 0;
+  opacity: 0.92;
+}
+
+.scene-bird {
+  position: absolute;
+  display: block;
+  height: auto;
+  filter: drop-shadow(0 0.55rem 1rem rgba(52, 85, 128, 0.12));
+  transform: rotate(var(--bird-tilt, 0deg));
+  transform-origin: center;
+}
+
+.scene-bird-one {
+  left: 14%;
+  top: 30%;
+  width: 6.6rem;
+  --bird-tilt: 7deg;
+}
+
+.scene-bird-two {
+  left: 46%;
+  top: 18%;
+  width: 3.9rem;
+  opacity: 0.78;
+  --bird-tilt: -3deg;
+}
+
+.scene-bird-three {
+  right: 6%;
+  top: 30%;
+  width: 12.2rem;
+  opacity: 0.82;
+  --bird-tilt: -5deg;
+}
+
+.scene-meadow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(34vh, 19rem);
+}
+
+.meadow-hill {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.meadow-hill-back {
+  left: -12%;
+  width: 76%;
+  height: 68%;
+  background: linear-gradient(180deg, rgba(159, 219, 134, 0.88), rgba(109, 178, 89, 0.96));
+}
+
+.meadow-hill-front {
+  right: -8%;
+  width: 78%;
+  height: 82%;
+  background: linear-gradient(180deg, rgba(138, 208, 112, 0.95), rgba(83, 156, 69, 0.98));
+}
+
+.meadow-flowers {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 0.8rem 1rem rgba(61, 96, 47, 0.12));
+}
+
+.meadow-flowers-left {
+  left: 0;
+  width: clamp(20rem, 30vw, 29rem);
+}
+
+.meadow-flowers-right {
+  right: 0;
+  width: clamp(18rem, 27vw, 26rem);
+  transform: scaleX(-1);
+  transform-origin: center bottom;
+}
+
+.meadow-blades {
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background:
+    radial-gradient(circle at 8% 100%, rgba(125, 189, 92, 0.88) 0 18%, transparent 19%),
+    radial-gradient(circle at 22% 100%, rgba(100, 170, 78, 0.92) 0 16%, transparent 17%),
+    radial-gradient(circle at 38% 100%, rgba(121, 196, 92, 0.92) 0 17%, transparent 18%),
+    radial-gradient(circle at 58% 100%, rgba(103, 168, 79, 0.92) 0 18%, transparent 19%),
+    radial-gradient(circle at 76% 100%, rgba(129, 197, 98, 0.9) 0 18%, transparent 19%),
+    radial-gradient(circle at 92% 100%, rgba(101, 165, 79, 0.92) 0 17%, transparent 18%);
+  opacity: 0.9;
+}
+
+.flower {
+  position: absolute;
+  bottom: 1.25rem;
+  width: 1.2rem;
+  height: 4.1rem;
+}
+
+.flower::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 3px;
+  height: 3rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #67a74f, #3c7d2d);
+  transform: translateX(-50%);
+}
+
+.flower::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0.15rem;
+  width: 0.82rem;
+  height: 0.82rem;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.flower-one {
+  left: 9%;
+  height: 4.6rem;
+}
+
+.flower-one::after {
+  background: #ffe58b;
+  box-shadow:
+    0 -0.5rem 0 #fff6c8,
+    0.48rem 0 0 #fff6c8,
+    -0.48rem 0 0 #fff6c8,
+    0 0.5rem 0 #fff6c8;
+}
+
+.flower-two {
+  left: 23%;
+  height: 3.8rem;
+}
+
+.flower-two::after {
+  background: #ffb1c9;
+  box-shadow:
+    0 -0.48rem 0 #ffd7e4,
+    0.46rem 0 0 #ffd7e4,
+    -0.46rem 0 0 #ffd7e4,
+    0 0.48rem 0 #ffd7e4;
+}
+
+.flower-three {
+  right: 26%;
+  height: 4.2rem;
+}
+
+.flower-three::after {
+  background: #fff0a2;
+  box-shadow:
+    0 -0.5rem 0 #fff7cf,
+    0.5rem 0 0 #fff7cf,
+    -0.5rem 0 0 #fff7cf,
+    0 0.5rem 0 #fff7cf;
+}
+
+.flower-four {
+  right: 14%;
+  height: 4.9rem;
+}
+
+.flower-four::after {
+  background: #ffc6db;
+  box-shadow:
+    0 -0.5rem 0 #ffe1eb,
+    0.48rem 0 0 #ffe1eb,
+    -0.48rem 0 0 #ffe1eb,
+    0 0.5rem 0 #ffe1eb;
+}
+
+.flower-five {
+  right: 6%;
+  height: 3.6rem;
+}
+
+.flower-five::after {
+  background: #fff0a1;
+  box-shadow:
+    0 -0.46rem 0 #fff8d4,
+    0.44rem 0 0 #fff8d4,
+    -0.44rem 0 0 #fff8d4,
+    0 0.46rem 0 #fff8d4;
+}
+
+body.has-motion .scene-cloud {
+  animation: cloud-drift var(--cloud-duration, 30s) ease-in-out infinite alternate;
+}
+
+body.has-motion .scene-cloud-one {
+  --cloud-duration: 30s;
+}
+
+body.has-motion .scene-cloud-two {
+  --cloud-duration: 26s;
+}
+
+body.has-motion .scene-cloud-three {
+  --cloud-duration: 34s;
+}
+
+body.has-motion .scene-cloud-four {
+  --cloud-duration: 28s;
+}
+
+body.has-motion .scene-cloud-five {
+  --cloud-duration: 32s;
+}
+
+body.has-motion .scene-cloud-six {
+  --cloud-duration: 27s;
+}
+
+body.has-motion .scene-cloud-seven {
+  --cloud-duration: 35s;
+}
+
+body.has-motion .scene-cloud-eight {
+  --cloud-duration: 24s;
+}
+
+body.has-motion .scene-cloud-nine {
+  --cloud-duration: 31s;
+}
+
+body.has-motion .scene-cloud-ten {
+  --cloud-duration: 29s;
+}
+
+body.has-motion .scene-cloud-eleven {
+  --cloud-duration: 33s;
+}
+
+body.has-motion .scene-birds {
+  animation: bird-glide 12s ease-in-out infinite;
+}
+
+body.has-motion .scene-bird-one {
+  animation: bird-hover 7s ease-in-out infinite;
+}
+
+body.has-motion .scene-bird-two {
+  animation: bird-hover 9s ease-in-out infinite reverse;
+}
+
+body.has-motion .scene-bird-three {
+  animation: bird-hover 8s ease-in-out infinite;
+}
+
+@keyframes cloud-drift {
+  0% {
+    transform: translate(0, 0) rotate(var(--cloud-tilt, 0deg));
+  }
+
+  100% {
+    transform: translate(var(--cloud-drift-x, 1rem), var(--cloud-drift-y, 0rem))
+      rotate(calc(var(--cloud-tilt, 0deg) + var(--cloud-tilt-end, 1deg)));
+  }
+}
+
+@keyframes bird-glide {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-0.4rem, -0.3rem);
+  }
+}
+
+@keyframes bird-hover {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--bird-tilt, 0deg));
+  }
+
+  50% {
+    transform: translateY(-0.35rem) rotate(calc(var(--bird-tilt, 0deg) + 2deg));
+  }
+}
+
+.page-shell-clothesline {
+  position: relative;
+  z-index: 1;
+  width: min(calc(100% - 1rem), 1520px);
+}
+
+.clothesline-main {
+  padding-bottom: 7rem;
+}
+
+.clothesline-hero {
+  margin-top: 1rem;
+  padding: 2.45rem clamp(1.35rem, 2.8vw, 3rem) 2.8rem;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.clothesline-hero::before {
+  width: 168px;
+  height: 106px;
+  right: 2.2rem;
+  top: 1.25rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 24% 64%, rgba(255, 255, 255, 0.94) 0 26%, transparent 27%),
+    radial-gradient(circle at 48% 38%, rgba(255, 255, 255, 0.96) 0 31%, transparent 32%),
+    radial-gradient(circle at 72% 62%, rgba(255, 255, 255, 0.92) 0 25%, transparent 26%),
+    radial-gradient(circle at 51% 70%, rgba(255, 255, 255, 0.9) 0 29%, transparent 30%);
+  filter: drop-shadow(0 14px 18px rgba(129, 176, 214, 0.18));
+  transform: none;
+}
+
+.clothesline-hero h1 {
+  max-width: 13ch;
+}
+
+.clothesline-hero .hero-text {
+  max-width: 68ch;
+}
+
+.clothesline-intro-note {
+  display: inline-block;
+  max-width: 58ch;
+  margin: 1.35rem 0 0;
+  padding: 0.9rem 1rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(70, 63, 114, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.62;
+}
+
+.clothesline-gallery {
+  position: relative;
+  display: grid;
+  gap: 1.75rem;
+  padding-top: 2rem;
+}
+
+.cloth-row {
+  position: relative;
+  min-height: 24rem;
+  display: flex;
+}
+
+.cloth-row-left {
+  justify-content: flex-start;
+}
+
+.cloth-row-right {
+  justify-content: flex-end;
+}
+
+.clothesline-rope {
+  position: absolute;
+  top: 1.2rem;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(92, 77, 58, 0.15)),
+    linear-gradient(90deg, rgba(139, 108, 74, 0.98), rgba(181, 149, 108, 0.96), rgba(137, 106, 73, 0.98));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+  transform: rotate(var(--rope-angle));
+  transform-origin: center;
+}
+
+.cloth-anchor {
+  position: relative;
+  width: min(var(--note-width, 31rem), calc(100vw - 2rem));
+  margin-inline: clamp(0.5rem, 4vw, 5rem);
+}
+
+.note-wide {
+  --note-width: 35rem;
+}
+
+.note-medium {
+  --note-width: 30rem;
+}
+
+.note-portrait {
+  --note-width: 25rem;
+}
+
+.note-square {
+  --note-width: 27rem;
+}
+
+.clothespin {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1.2rem;
+  height: 3.15rem;
+  border-radius: 0.45rem;
+  background:
+    linear-gradient(180deg, rgba(245, 215, 173, 0.98), rgba(190, 145, 96, 0.98));
+  box-shadow: 0 7px 14px rgba(75, 52, 23, 0.22);
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+.clothespin::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0.36rem;
+  width: 2px;
+  height: 2.35rem;
+  background: rgba(111, 73, 31, 0.38);
+  transform: translateX(-50%);
+}
+
+.cloth-note {
+  position: relative;
+  overflow: hidden;
+  margin-top: 1.55rem;
+  z-index: 2;
+  border-radius: 1.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.18)),
+    linear-gradient(145deg, rgba(255, 251, 244, 0.98), rgba(248, 253, 255, 0.96));
+  box-shadow: 0 30px 48px rgba(56, 53, 91, 0.18);
+  transform-origin: top center;
+}
+
+.cloth-row:nth-child(2n) .cloth-note {
+  border-radius: 2rem 1.55rem 1.85rem 1.45rem;
+}
+
+.cloth-row:nth-child(2n + 1) .cloth-note {
+  border-radius: 1.45rem 2rem 1.55rem 1.95rem;
+}
+
+.cloth-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid rgba(70, 63, 114, 0.08);
+}
+
+.cloth-photo-placeholder {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 201, 126, 0.62), transparent 22%),
+    radial-gradient(circle at 80% 78%, rgba(125, 180, 255, 0.54), transparent 24%),
+    linear-gradient(145deg, rgba(255, 244, 229, 0.98), rgba(244, 250, 255, 0.98));
+}
+
+.cloth-photo-placeholder span {
+  max-width: 18ch;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cloth-photo.is-landscape {
+  aspect-ratio: 16 / 10;
+}
+
+.cloth-photo.is-portrait {
+  aspect-ratio: 4 / 5.1;
+}
+
+.cloth-photo.is-square {
+  aspect-ratio: 1 / 1;
+}
+
+.cloth-caption {
+  display: grid;
+  gap: 0.58rem;
+  padding: 1.1rem 1.15rem 1.25rem;
+}
+
+.cloth-meta {
+  margin: 0;
+  color: #4f7dd4;
+  font-size: 0.77rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cloth-caption h2 {
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  line-height: 1.06;
+}
+
+.cloth-caption p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.68;
+}
+
+.clothesline-gallery.is-swaying .cloth-note {
+  animation: clothesline-sway var(--swing-duration, 5.4s) ease-in-out infinite;
+  animation-delay: var(--swing-delay, 0s);
+}
+
+.clothesline-gallery:not(.is-swaying) .cloth-note {
+  animation: none;
+  transform: rotate(0deg);
+}
+
+@keyframes clothesline-sway {
+  0% {
+    transform: rotate(calc((1.4deg + (var(--breeze-strength, 0) * 5deg)) * -1 * var(--swing-factor, 1)));
+  }
+
+  50% {
+    transform: rotate(calc((1.4deg + (var(--breeze-strength, 0) * 5deg)) * var(--swing-factor, 1)));
+  }
+
+  100% {
+    transform: rotate(calc((1.4deg + (var(--breeze-strength, 0) * 5deg)) * -1 * var(--swing-factor, 1)));
+  }
+}
+
 body.has-motion .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -2232,6 +3024,18 @@ body.has-motion .about-strip-card.reveal.is-visible {
     grid-column: 2;
   }
 
+  .page-shell-clothesline {
+    width: min(calc(100% - 0.8rem), 1520px);
+  }
+
+  .cloth-row {
+    min-height: 20rem;
+  }
+
+  .cloth-anchor {
+    margin-inline: 0.4rem;
+  }
+
   h1 {
     max-width: 12ch;
   }
@@ -2291,6 +3095,10 @@ body.has-motion .about-strip-card.reveal.is-visible {
 
   .page-shell-wide {
     width: min(100% - 1.2rem, 1380px);
+  }
+
+  .page-shell-clothesline {
+    width: min(calc(100% - 0.45rem), 1520px);
   }
 
   .site-header {
@@ -2406,6 +3214,161 @@ body.has-motion .about-strip-card.reveal.is-visible {
   .mixtape-record {
     width: 148px;
     height: 148px;
+  }
+
+  .clothesline-hero::before {
+    right: 1rem;
+    top: 1rem;
+    width: 128px;
+    height: 84px;
+  }
+
+  .scene-sun {
+    left: 0;
+    top: 0;
+    width: 13.5rem;
+  }
+
+  .scene-cloud-one {
+    left: -3.2rem;
+    top: 18%;
+    width: 16.5rem;
+  }
+
+  .scene-cloud-two {
+    top: 26%;
+    right: -2.8rem;
+    width: 15rem;
+  }
+
+  .scene-cloud-three {
+    top: 39%;
+    left: -6%;
+    width: 20rem;
+  }
+
+  .scene-cloud-four {
+    top: 12%;
+    right: -1.8rem;
+    width: 7.75rem;
+  }
+
+  .scene-cloud-five {
+    top: 50%;
+    right: -2.4rem;
+    width: 13rem;
+  }
+
+  .scene-cloud-six {
+    top: 58%;
+    left: -2.5rem;
+    width: 11.5rem;
+  }
+
+  .scene-cloud-seven {
+    top: 67%;
+    left: -8%;
+    width: 16rem;
+  }
+
+  .scene-cloud-eight {
+    top: 76%;
+    right: -2rem;
+    width: 8rem;
+  }
+
+  .scene-cloud-nine {
+    top: 83%;
+    left: -1.25rem;
+    width: 10rem;
+  }
+
+  .scene-cloud-ten {
+    top: 90%;
+    right: -2.5rem;
+    width: 15rem;
+  }
+
+  .scene-cloud-eleven {
+    top: 55%;
+    left: 18%;
+    width: 12rem;
+  }
+
+  .scene-birds {
+    inset: 0;
+  }
+
+  .scene-bird-one {
+    left: 10%;
+    top: 28%;
+    width: 4.4rem;
+  }
+
+  .scene-bird-two {
+    left: 42%;
+    top: 18%;
+    width: 2.8rem;
+  }
+
+  .scene-bird-three {
+    right: 4%;
+    top: 29%;
+    width: 8.2rem;
+  }
+
+  .scene-cloud-four,
+  .scene-cloud-eight,
+  .scene-birds {
+    opacity: 0.38;
+  }
+
+  .scene-meadow {
+    height: 11.5rem;
+  }
+
+  .meadow-flowers-left {
+    width: 14rem;
+  }
+
+  .meadow-flowers-right {
+    right: 0;
+    width: 12.5rem;
+  }
+
+  .flower-one,
+  .flower-two,
+  .flower-three,
+  .flower-four,
+  .flower-five {
+    transform: scale(0.82);
+    transform-origin: bottom center;
+  }
+
+  .clothesline-hero h1 {
+    max-width: 10ch;
+  }
+
+  .clothesline-gallery {
+    gap: 1.2rem;
+  }
+
+  .cloth-row {
+    min-height: 18rem;
+  }
+
+  .cloth-anchor {
+    width: min(var(--note-width, 31rem), calc(100vw - 1.4rem));
+    margin-inline: 0;
+  }
+
+  .cloth-photo.is-tall,
+  .cloth-photo.is-portrait {
+    aspect-ratio: 4 / 4.8;
+  }
+
+  .cloth-caption {
+    padding: 0.95rem 0.95rem 1rem;
   }
 
   .about-strip-frames {

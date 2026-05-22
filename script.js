@@ -356,3 +356,72 @@ if (writingArticleList && writingPagination) {
 
   renderWritingArchive();
 }
+
+const clotheslineGallery = document.getElementById("clothesline-gallery");
+
+if (clotheslineGallery) {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (prefersReducedMotion) {
+    clotheslineGallery.classList.remove("is-swaying");
+  } else {
+    let breezeStrength = 1.05;
+    let animationFrameId = null;
+    let lastScrollY = window.scrollY;
+    let lastScrollTime = performance.now();
+
+    const applyBreeze = () => {
+      clotheslineGallery.style.setProperty("--breeze-strength", breezeStrength.toFixed(3));
+
+      if (breezeStrength > 0.045) {
+        clotheslineGallery.classList.add("is-swaying");
+      } else {
+        clotheslineGallery.classList.remove("is-swaying");
+      }
+    };
+
+    const decayBreeze = () => {
+      breezeStrength *= 0.968;
+
+      if (breezeStrength < 0.03) {
+        breezeStrength = 0;
+        applyBreeze();
+        animationFrameId = null;
+        return;
+      }
+
+      applyBreeze();
+      animationFrameId = window.requestAnimationFrame(decayBreeze);
+    };
+
+    const startBreeze = (nextStrength) => {
+      breezeStrength = Math.max(breezeStrength, nextStrength);
+      applyBreeze();
+
+      if (animationFrameId !== null) {
+        return;
+      }
+
+      animationFrameId = window.requestAnimationFrame(decayBreeze);
+    };
+
+    const handleScrollBreeze = () => {
+      const currentTime = performance.now();
+      const deltaY = Math.abs(window.scrollY - lastScrollY);
+      const deltaTime = Math.max(currentTime - lastScrollTime, 16);
+      const velocity = deltaY / deltaTime;
+      const impulse = Math.min(1.35, velocity * 14);
+
+      if (impulse > 0.08) {
+        startBreeze(impulse);
+      }
+
+      lastScrollY = window.scrollY;
+      lastScrollTime = currentTime;
+    };
+
+    applyBreeze();
+    startBreeze(1.05);
+    window.addEventListener("scroll", handleScrollBreeze, { passive: true });
+  }
+}
