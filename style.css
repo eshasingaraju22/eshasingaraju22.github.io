@@ -2395,23 +2395,23 @@ body.clothesline-page::before {
 }
 
 .scene-bird-one {
-  left: 14%;
-  top: 30%;
+  left: 32%;
+  top: 67%;
   width: 6.6rem;
   --bird-tilt: 7deg;
 }
 
 .scene-bird-two {
-  left: 46%;
-  top: 18%;
+  left: 54%;
+  top: 14%;
   width: 3.9rem;
   opacity: 0.78;
   --bird-tilt: -3deg;
 }
 
 .scene-bird-three {
-  right: 6%;
-  top: 30%;
+  left: 82%;
+  top: 44%;
   width: 12.2rem;
   opacity: 0.82;
   --bird-tilt: -5deg;
@@ -2689,28 +2689,23 @@ body.has-motion .scene-bird-three {
 }
 
 .clothesline-hero {
-  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 760px);
+  margin: 1rem auto 0;
   padding: 2.45rem clamp(1.35rem, 2.8vw, 3rem) 2.8rem;
   background: rgba(255, 255, 255, 0.52);
+  text-align: center;
 }
 
 .clothesline-hero::before {
-  width: 168px;
-  height: 106px;
-  right: 2.2rem;
-  top: 1.25rem;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle at 24% 64%, rgba(255, 255, 255, 0.94) 0 26%, transparent 27%),
-    radial-gradient(circle at 48% 38%, rgba(255, 255, 255, 0.96) 0 31%, transparent 32%),
-    radial-gradient(circle at 72% 62%, rgba(255, 255, 255, 0.92) 0 25%, transparent 26%),
-    radial-gradient(circle at 51% 70%, rgba(255, 255, 255, 0.9) 0 29%, transparent 30%);
-  filter: drop-shadow(0 14px 18px rgba(129, 176, 214, 0.18));
-  transform: none;
+  display: none;
 }
 
 .clothesline-hero h1 {
   max-width: 13ch;
+  margin: 0 auto;
 }
 
 .clothesline-hero .hero-text {
@@ -2733,13 +2728,15 @@ body.has-motion .scene-bird-three {
 .clothesline-gallery {
   position: relative;
   display: grid;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   gap: 1.75rem;
-  padding-top: 2rem;
+  padding-top: 7.35rem;
 }
 
 .cloth-row {
   position: relative;
-  min-height: 24rem;
+  min-height: 37rem;
   display: flex;
 }
 
@@ -2753,23 +2750,42 @@ body.has-motion .scene-bird-three {
 
 .clothesline-rope {
   position: absolute;
-  top: 1.2rem;
+  top: 0.05rem;
   left: 0;
   right: 0;
-  height: 4px;
-  border-radius: 999px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(92, 77, 58, 0.15)),
-    linear-gradient(90deg, rgba(139, 108, 74, 0.98), rgba(181, 149, 108, 0.96), rgba(137, 106, 73, 0.98));
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+  height: 3.35rem;
   transform: rotate(var(--rope-angle));
   transform-origin: center;
 }
 
+.clothesline-rope::before,
+.clothesline-rope::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.clothesline-rope::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 44' preserveAspectRatio='none'%3E%3Cpath d='M1 6 Q50 39 99 6' fill='none' stroke='rgba(255,255,255,0.55)' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  opacity: 0.9;
+}
+
+.clothesline-rope::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 44' preserveAspectRatio='none'%3E%3Cpath d='M1 7 Q50 40 99 7' fill='none' stroke='rgb(156,124,90)' stroke-width='4.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.28));
+}
+
 .cloth-anchor {
-  position: relative;
+  --pointer-tilt: 0deg;
+  --pointer-lift: 0px;
+  position: absolute;
+  top: 0;
+  left: var(--pin-left, 50%);
+  transform: translateX(-50%);
   width: min(var(--note-width, 31rem), calc(100vw - 2rem));
-  margin-inline: clamp(0.5rem, 4vw, 5rem);
+  margin: 0;
 }
 
 .note-wide {
@@ -2786,6 +2802,10 @@ body.has-motion .scene-bird-three {
 
 .note-square {
   --note-width: 27rem;
+}
+
+.clothesline-gallery .note-square {
+  --note-width: 22rem;
 }
 
 .clothespin {
@@ -2825,6 +2845,7 @@ body.has-motion .scene-bird-three {
     linear-gradient(145deg, rgba(255, 251, 244, 0.98), rgba(248, 253, 255, 0.96));
   box-shadow: 0 30px 48px rgba(56, 53, 91, 0.18);
   transform-origin: top center;
+  will-change: transform;
 }
 
 .cloth-row:nth-child(2n) .cloth-note {
@@ -2841,6 +2862,13 @@ body.has-motion .scene-bird-three {
   justify-content: center;
   width: 100%;
   border-bottom: 1px solid rgba(70, 63, 114, 0.08);
+}
+
+.cloth-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .cloth-photo-placeholder {
@@ -2905,20 +2933,35 @@ body.has-motion .scene-bird-three {
 
 .clothesline-gallery:not(.is-swaying) .cloth-note {
   animation: none;
-  transform: rotate(0deg);
+  transform: translateY(var(--pointer-lift, 0px)) rotate(var(--pointer-tilt, 0deg));
 }
 
 @keyframes clothesline-sway {
   0% {
-    transform: rotate(calc((1.4deg + (var(--breeze-strength, 0) * 5deg)) * -1 * var(--swing-factor, 1)));
+    transform: translateY(var(--pointer-lift, 0px)) rotate(
+      calc(
+        ((1.4deg + (var(--breeze-strength, 0) * 5deg)) * -1 * var(--swing-factor, 1)) +
+          var(--pointer-tilt, 0deg)
+      )
+    );
   }
 
   50% {
-    transform: rotate(calc((1.4deg + (var(--breeze-strength, 0) * 5deg)) * var(--swing-factor, 1)));
+    transform: translateY(var(--pointer-lift, 0px)) rotate(
+      calc(
+        ((1.4deg + (var(--breeze-strength, 0) * 5deg)) * var(--swing-factor, 1)) +
+          var(--pointer-tilt, 0deg)
+      )
+    );
   }
 
   100% {
-    transform: rotate(calc((1.4deg + (var(--breeze-strength, 0) * 5deg)) * -1 * var(--swing-factor, 1)));
+    transform: translateY(var(--pointer-lift, 0px)) rotate(
+      calc(
+        ((1.4deg + (var(--breeze-strength, 0) * 5deg)) * -1 * var(--swing-factor, 1)) +
+          var(--pointer-tilt, 0deg)
+      )
+    );
   }
 }
 
@@ -3029,11 +3072,11 @@ body.has-motion .about-strip-card.reveal.is-visible {
   }
 
   .cloth-row {
-    min-height: 20rem;
+    min-height: 32rem;
   }
 
   .cloth-anchor {
-    margin-inline: 0.4rem;
+    width: min(var(--note-width, 22rem), calc(100vw - 2rem));
   }
 
   h1 {
@@ -3300,20 +3343,20 @@ body.has-motion .about-strip-card.reveal.is-visible {
   }
 
   .scene-bird-one {
-    left: 10%;
-    top: 28%;
+    left: 28%;
+    top: 65%;
     width: 4.4rem;
   }
 
   .scene-bird-two {
-    left: 42%;
-    top: 18%;
+    left: 56%;
+    top: 12%;
     width: 2.8rem;
   }
 
   .scene-bird-three {
-    right: 4%;
-    top: 29%;
+    left: 79%;
+    top: 42%;
     width: 8.2rem;
   }
 
@@ -3351,15 +3394,17 @@ body.has-motion .about-strip-card.reveal.is-visible {
 
   .clothesline-gallery {
     gap: 1.2rem;
+    overflow-x: auto;
+    padding-bottom: 0.8rem;
   }
 
   .cloth-row {
-    min-height: 18rem;
+    min-height: 29rem;
+    min-width: 880px;
   }
 
   .cloth-anchor {
-    width: min(var(--note-width, 31rem), calc(100vw - 1.4rem));
-    margin-inline: 0;
+    width: min(var(--note-width, 20rem), calc(100vw - 2rem));
   }
 
   .cloth-photo.is-tall,

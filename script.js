@@ -360,6 +360,7 @@ if (writingArticleList && writingPagination) {
 const clotheslineGallery = document.getElementById("clothesline-gallery");
 
 if (clotheslineGallery) {
+  const clotheslineAnchors = Array.from(clotheslineGallery.querySelectorAll(".cloth-anchor"));
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (prefersReducedMotion) {
@@ -369,6 +370,11 @@ if (clotheslineGallery) {
     let animationFrameId = null;
     let lastScrollY = window.scrollY;
     let lastScrollTime = performance.now();
+    let pointerFrameId = null;
+    let pointerTargetX = null;
+    let pointerCurrentX = null;
+
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
     const applyBreeze = () => {
       clotheslineGallery.style.setProperty("--breeze-strength", breezeStrength.toFixed(3));
@@ -420,8 +426,82 @@ if (clotheslineGallery) {
       lastScrollTime = currentTime;
     };
 
+    const updatePointerTilts = () => {
+      if (pointerTargetX === null) {
+        let hasVisibleMotion = false;
+
+        clotheslineAnchors.forEach((anchor) => {
+          const currentTilt = Number.parseFloat(anchor.style.getPropertyValue("--pointer-tilt")) || 0;
+          const currentLift = Number.parseFloat(anchor.style.getPropertyValue("--pointer-lift")) || 0;
+          const nextTilt = Math.abs(currentTilt) < 0.05 ? 0 : currentTilt * 0.82;
+          const nextLift = Math.abs(currentLift) < 0.08 ? 0 : currentLift * 0.82;
+
+          if (nextTilt !== 0 || nextLift !== 0) {
+            hasVisibleMotion = true;
+          }
+
+          anchor.style.setProperty("--pointer-tilt", `${nextTilt.toFixed(3)}deg`);
+          anchor.style.setProperty("--pointer-lift", `${nextLift.toFixed(3)}px`);
+        });
+
+        if (!hasVisibleMotion) {
+          pointerCurrentX = null;
+          pointerFrameId = null;
+          return;
+        }
+      } else {
+        pointerCurrentX =
+          pointerCurrentX === null
+            ? pointerTargetX
+            : pointerCurrentX + (pointerTargetX - pointerCurrentX) * 0.18;
+
+        const galleryRect = clotheslineGallery.getBoundingClientRect();
+        const referenceWidth = Math.max(galleryRect.width * 0.18, 1);
+
+        clotheslineAnchors.forEach((anchor, index) => {
+          const rect = anchor.getBoundingClientRect();
+          const anchorCenter = rect.left + rect.width / 2;
+          const normalizedOffset = clamp((pointerCurrentX - anchorCenter) / referenceWidth, -1.3, 1.3);
+          const direction = index % 2 === 0 ? 1 : -1;
+          const depth = 4.8 + (index % 3) * 0.9;
+          const wave = Math.sin(normalizedOffset * (Math.PI / 2));
+          const tilt = clamp(wave * depth * direction, -10, 10);
+          const lift = -Math.abs(wave) * (7 + (index % 3) * 1.5);
+          anchor.style.setProperty("--pointer-tilt", `${tilt.toFixed(3)}deg`);
+          anchor.style.setProperty("--pointer-lift", `${lift.toFixed(3)}px`);
+        });
+
+        if (Math.abs(pointerTargetX - pointerCurrentX) < 0.08) {
+          pointerFrameId = null;
+          return;
+        }
+      }
+
+      pointerFrameId = window.requestAnimationFrame(updatePointerTilts);
+    };
+
+    const startPointerAnimation = () => {
+      if (pointerFrameId !== null) {
+        return;
+      }
+
+      pointerFrameId = window.requestAnimationFrame(updatePointerTilts);
+    };
+
+    const handlePointerMove = (event) => {
+      pointerTargetX = event.clientX;
+      startPointerAnimation();
+    };
+
+    const handlePointerLeave = () => {
+      pointerTargetX = null;
+      startPointerAnimation();
+    };
+
     applyBreeze();
     startBreeze(1.05);
     window.addEventListener("scroll", handleScrollBreeze, { passive: true });
+    clotheslineGallery.addEventListener("pointermove", handlePointerMove);
+    clotheslineGallery.addEventListener("pointerleave", handlePointerLeave);
   }
 }
