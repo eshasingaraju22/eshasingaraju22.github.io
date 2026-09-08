@@ -3,118 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Esha Singaraju | Portfolio</title>
-    <meta
-      name="description"
-      content="Colorful personal portfolio for Esha Singaraju with work, writing, experience, and speaking."
-    />
+    <title>Esha FM | Work, Words, and After Hours</title>
+    <meta name="description" content="Esha Singaraju's personal frequency: work, writing, research, and DJing." />
     <link rel="icon" type="image/png" href="assets/finalfavicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400;75..125,600;75..125,700;75..125,800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=20260903e" />
   </head>
-  <body class="theme-home">
+  <body>
     <div class="page-shell">
       <header class="site-header">
-        <a class="brand" href="index.html">ES</a>
+        <a class="brand" href="index.html" aria-label="Esha FM home">Esha FM</a>
         <nav class="site-nav" aria-label="Primary">
-          <a class="is-active" href="index.html">Home</a>
-          <a href="experience.html">Experience</a>
-          <a href="writing.html">Writing</a>
-          <a href="out-and-about.html">Out &amp; About</a>
+          <a class="is-active" href="experience.html">Side A</a>
+          <a href="writing.html">Liner Notes</a>
+          <a href="out-and-about.html">Crate Digging</a>
+          <a href="mailto:eshasingaraju@gmail.com">Request Line</a>
         </nav>
       </header>
 
       <main>
-        <section class="home-board reveal" aria-label="Homepage board">
-          <div class="home-board-shell">
-            <div class="home-top-grid">
-              <article class="home-card home-intro-card">
-                <h1>Hi, I'm Esha!</h1>
-                <p class="home-copy home-copy-lead">
-                  <span class="world-line">
-                    <span>I’m curious to how the</span>
-                    <img class="world-inline" src="assets/world.png" alt="World graphic" />
-                    <span>works:</span>
-                  </span>
-                </p>
-                <p class="home-copy home-copy-follow">
-                  The systems that shape our lives, the stories we tell about
-                  them, and the tools we build to understand them.
-                </p>
-                <p class="home-copy">
-                  So I write, research, code, and occasionally DJ – making
-                  thoughtful things that feel alive, useful, and a little
-                  unexpected!
-                </p>
-                <p class="home-copy">
-                  I'm currently a Junior at UNC Chapel Hill🐏 pursuing double
-                  majors in Computer Science and Environmental Studies
-                  (Sustainability track).
-                </p>
-              </article>
-
-              <article class="home-card home-photo-wrap">
-                <div class="home-photo-frame">
-                  <img
-                    class="home-photo"
-                    src="assets/headshot.jpeg"
-                    alt="Portrait of Esha Singaraju"
-                  />
-                  <img class="home-photo-overlay" src="assets/frame.png" alt="" />
-                </div>
-              </article>
-
+        <section class="home-hero reveal">
+          <div class="hero-copy">
+            <div class="bio-copy">
+              <p class="eyebrow"><span class="live-dot"></span>On air from Chapel Hill</p>
+              <h1 class="intro-title">Hi!<br />I'm Esha.</h1>
+              <p class="intro-copy intro-copy-lead">I'm curious about how the world works: the systems that shape our lives, the stories we tell, and the tools we build to understand them.</p>
+              <p class="intro-copy">So I write, research, code, and occasionally DJ, making thoughtful things that feel alive, useful, and a little unexpected.</p>
+              <p class="intro-copy intro-copy-small">I'm a senior at UNC Chapel Hill pursuing Computer Science and Environmental Studies.</p>
             </div>
+            <div class="hero-photo-panel"><img class="hero-portrait" src="assets/headshot.jpeg" alt="Portrait of Esha Singaraju" /></div>
+          </div>
+          <div class="turntable" data-turntable aria-label="Interactive turntable: drag the needle onto the record to start it">
+            <span class="turntable-plinth"></span>
+            <span class="vinyl"></span>
+            <button class="tonearm" type="button" aria-label="Drag the tonearm onto or off the record" aria-pressed="false"></button>
+            <span class="rpm" data-turntable-status>Place needle to play</span>
+          </div>
+        </section>
 
-            <div class="home-bottom-grid">
-              <nav class="home-preview-tabs" aria-label="Page previews">
-                <a
-                  class="preview-tab is-active"
-                  href="experience.html"
-                  data-preview="experience"
-                >
-                  <span>01</span>
-                  <strong>Experience</strong>
-                </a>
-                <a
-                  class="preview-tab"
-                  href="writing.html"
-                  data-preview="writing"
-                >
-                  <span>02</span>
-                  <strong>Writing</strong>
-                </a>
-                <a
-                  class="preview-tab"
-                  href="out-and-about.html"
-                  data-preview="out-and-about"
-                >
-                  <span>03</span>
-                  <strong>Out &amp; About</strong>
-                </a>
-              </nav>
+        <section class="now-playing reveal" aria-label="Now playing">
+          <p class="now-label">Now playing</p>
+          <p class="now-track">A mix of curious questions and useful things.</p>
+        </section>
 
-              <article class="home-preview-panel" aria-live="polite">
-                <p class="preview-overline" id="preview-overline">Preview</p>
-                <h2 class="preview-title" id="preview-title">Experience</h2>
-                <p class="preview-description" id="preview-description">
-                  Resume-style highlights, leadership roles, projects, and the
-                  work I want people to notice first.
-                </p>
-                <ul class="preview-list" id="preview-list" style="display: none"></ul>
-                <a class="preview-cta preview-cta-experience" id="preview-cta" href="experience.html">Click to see more!</a>
-              </article>
-            </div>
+        <section class="reveal">
+          <div class="section-head">
+            <h2>In the crate</h2>
+            <p>Pick a record to explore</p>
+          </div>
+          <div class="record-grid" aria-label="Record crate navigation">
+            <a class="record-link record-side-a" href="experience.html">
+              <div class="record-cover cover-side-a" aria-hidden="true"></div>
+              <div class="record-info"><p class="section-kicker">01 / Side A</p><h3>On the record</h3></div>
+            </a>
+            <a class="record-link record-notes" href="writing.html">
+              <div class="record-cover cover-notes" aria-hidden="true"></div>
+              <div class="record-info"><p class="section-kicker">02 / Liner Notes</p><h3>In the margins</h3></div>
+            </a>
+            <a class="record-link record-crate-digging" href="out-and-about.html">
+              <div class="record-cover cover-crate" aria-hidden="true"></div>
+              <div class="record-info"><p class="section-kicker">03 / Crate Digging</p><h3>After hours</h3></div>
+            </a>
+          </div>
+        </section>
+
+        <section class="about-panel reveal">
+          <div class="about-copy">
+            <p class="section-kicker">The person behind the set</p>
+            <h2>Good ideas, loudly considered.</h2>
+            <p>I'm a junior at UNC Chapel Hill studying Computer Science and Environmental Studies. I care about thoughtful systems, sharper stories, and making work that feels alive.</p>
           </div>
         </section>
       </main>
-    </div>
 
-    <script src="script.js"></script>
+      <footer class="site-footer"><span>Esha FM / All signal, no static</span><a href="mailto:eshasingaraju@gmail.com">Say hello</a></footer>
+    </div>
+    <script src="script.js?v=20260903c"></script>
   </body>
 </html>

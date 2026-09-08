@@ -39,6 +39,75 @@ const initReveals = (scope = document) => {
 
 initReveals();
 
+const turntable = document.querySelector("[data-turntable]");
+
+if (turntable) {
+  const tonearm = turntable.querySelector(".tonearm");
+  const vinyl = turntable.querySelector(".vinyl");
+  const status = turntable.querySelector("[data-turntable-status]");
+  let isDraggingTonearm = false;
+
+  const setPlayback = (isPlaying) => {
+    turntable.classList.toggle("is-playing", isPlaying);
+    tonearm.setAttribute("aria-pressed", String(isPlaying));
+    status.textContent = isPlaying ? "Now spinning / 33 1/3 RPM" : "Place needle to play";
+  };
+
+  const cueTonearm = (event) => {
+    const tableRect = turntable.getBoundingClientRect();
+    const pivotX = tableRect.right - tableRect.width * 0.09;
+    const pivotY = tableRect.top + tableRect.height * 0.13;
+    const dx = event.clientX - pivotX;
+    const dy = event.clientY - pivotY;
+    const rawAngle = (Math.atan2(-dy, -dx) * 180) / Math.PI;
+    const normalizedAngle = rawAngle < 0 ? rawAngle + 360 : rawAngle;
+    const angle = Math.min(345, Math.max(270, normalizedAngle));
+    const recordRect = vinyl.getBoundingClientRect();
+    const needleLength = tonearm.offsetWidth;
+    const radians = (angle * Math.PI) / 180;
+    const needleX = pivotX - needleLength * Math.cos(radians);
+    const needleY = pivotY - needleLength * Math.sin(radians);
+    const recordX = recordRect.left + recordRect.width / 2;
+    const recordY = recordRect.top + recordRect.height / 2;
+    const isOnRecord = Math.hypot(needleX - recordX, needleY - recordY) < recordRect.width / 2;
+
+    tonearm.style.setProperty("--arm-angle", `${angle.toFixed(1)}deg`);
+    setPlayback(isOnRecord);
+  };
+
+  tonearm.addEventListener("pointerdown", (event) => {
+    isDraggingTonearm = true;
+    tonearm.setPointerCapture(event.pointerId);
+    cueTonearm(event);
+  });
+
+  tonearm.addEventListener("pointermove", (event) => {
+    if (isDraggingTonearm) {
+      cueTonearm(event);
+    }
+  });
+
+  const releaseTonearm = (event) => {
+    if (!isDraggingTonearm) {
+      return;
+    }
+
+    isDraggingTonearm = false;
+    tonearm.releasePointerCapture(event.pointerId);
+  };
+
+  tonearm.addEventListener("pointerup", releaseTonearm);
+  tonearm.addEventListener("pointercancel", releaseTonearm);
+  tonearm.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    event.preventDefault();
+    setPlayback(!turntable.classList.contains("is-playing"));
+  });
+}
+
 const previewContent = {
   experience: {
     overline: "Preview",
