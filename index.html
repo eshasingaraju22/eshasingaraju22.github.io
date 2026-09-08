@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400;75..125,600;75..125,700;75..125,800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=20260903e" />
+    <link rel="stylesheet" href="style.css?v=20260908" />
   </head>
   <body>
     <div class="page-shell">
@@ -29,7 +29,7 @@
             <div class="bio-copy">
               <p class="eyebrow"><span class="live-dot"></span>On air from Chapel Hill</p>
               <h1 class="intro-title">Hi!<br />I'm Esha.</h1>
-              <p class="intro-copy intro-copy-lead">I'm curious about how the world works: the systems that shape our lives, the stories we tell, and the tools we build to understand them.</p>
+              <p class="intro-copy intro-copy-lead">I'm curious about the systems shaping our lives, the stories we tell, and the tools that help us understand them.</p>
               <p class="intro-copy">So I write, research, code, and occasionally DJ, making thoughtful things that feel alive, useful, and a little unexpected.</p>
               <p class="intro-copy intro-copy-small">I'm a senior at UNC Chapel Hill pursuing Computer Science and Environmental Studies.</p>
             </div>
@@ -37,15 +37,20 @@
           </div>
           <div class="turntable" data-turntable aria-label="Interactive turntable: drag the needle onto the record to start it">
             <span class="turntable-plinth"></span>
-            <span class="vinyl"></span>
+            <span class="vinyl" data-active-vinyl="esha-fm" data-label="ESHA FM"></span>
             <button class="tonearm" type="button" aria-label="Drag the tonearm onto or off the record" aria-pressed="false"></button>
             <span class="rpm" data-turntable-status>Place needle to play</span>
+            <div class="vinyl-selector" aria-label="Choose a record">
+              <button class="vinyl-choice is-selected" type="button" draggable="true" data-vinyl="esha-fm" data-label="ESHA FM" aria-pressed="true"><span></span><b>Esha FM</b></button>
+              <button class="vinyl-choice" type="button" draggable="true" data-vinyl="blue-hour" data-label="BLUE HOUR" aria-pressed="false"><span></span><b>Blue hour</b></button>
+              <button class="vinyl-choice" type="button" draggable="true" data-vinyl="golden-hour" data-label="GOLDEN HOUR" aria-pressed="false"><span></span><b>Golden hour</b></button>
+            </div>
           </div>
         </section>
 
         <section class="now-playing reveal" aria-label="Now playing">
           <p class="now-label">Now playing</p>
-          <p class="now-track">A mix of curious questions and useful things.</p>
+          <p class="now-track" aria-label="Now playing placeholder"></p>
         </section>
 
         <section class="reveal">
@@ -80,6 +85,6 @@
 
       <footer class="site-footer"><span>Esha FM / All signal, no static</span><a href="mailto:eshasingaraju@gmail.com">Say hello</a></footer>
     </div>
-    <script src="script.js?v=20260903c"></script>
+    <script src="script.js?v=20260908"></script>
   </body>
 </html>

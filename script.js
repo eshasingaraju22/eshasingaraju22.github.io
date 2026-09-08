@@ -1,5 +1,47 @@
 document.body.classList.add("has-motion");
 
+const siteLoader = document.createElement("div");
+siteLoader.className = "site-loader";
+siteLoader.setAttribute("role", "status");
+siteLoader.setAttribute("aria-label", "Loading Esha FM");
+siteLoader.innerHTML = '<span class="loader-vinyl" aria-hidden="true"></span><p>Loading Esha FM</p>';
+document.body.prepend(siteLoader);
+document.body.classList.add("is-loading");
+
+const showLoader = () => {
+  siteLoader.classList.remove("is-hidden");
+  document.body.classList.add("is-loading");
+};
+
+const hideLoader = () => {
+  siteLoader.classList.add("is-hidden");
+  document.body.classList.remove("is-loading");
+};
+
+window.addEventListener("load", () => window.setTimeout(hideLoader, 160));
+window.addEventListener("pageshow", hideLoader);
+
+// Keep page transitions feeling like a station change, including cached navigations.
+document.querySelectorAll('a[href]').forEach((link) => {
+  const destination = new URL(link.href, window.location.href);
+
+  if (
+    destination.origin !== window.location.origin ||
+    destination.pathname === window.location.pathname ||
+    link.target === "_blank"
+  ) {
+    return;
+  }
+
+  link.addEventListener("click", (event) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+
+    showLoader();
+  });
+});
+
 const previewTabs = document.querySelectorAll(".preview-tab");
 const previewOverline = document.getElementById("preview-overline");
 const previewTitle = document.getElementById("preview-title");
@@ -45,7 +87,9 @@ if (turntable) {
   const tonearm = turntable.querySelector(".tonearm");
   const vinyl = turntable.querySelector(".vinyl");
   const status = turntable.querySelector("[data-turntable-status]");
+  const recordChoices = Array.from(turntable.querySelectorAll(".vinyl-choice"));
   let isDraggingTonearm = false;
+  let draggedChoice = null;
 
   const setPlayback = (isPlaying) => {
     turntable.classList.toggle("is-playing", isPlaying);
@@ -105,6 +149,48 @@ if (turntable) {
 
     event.preventDefault();
     setPlayback(!turntable.classList.contains("is-playing"));
+  });
+
+  const selectVinyl = (choice, shouldPlay = false) => {
+    if (!choice) {
+      return;
+    }
+
+    recordChoices.forEach((recordChoice) => {
+      const isSelected = recordChoice === choice;
+      recordChoice.classList.toggle("is-selected", isSelected);
+      recordChoice.setAttribute("aria-pressed", String(isSelected));
+    });
+
+    vinyl.dataset.activeVinyl = choice.dataset.vinyl;
+    vinyl.dataset.label = choice.dataset.label;
+    setPlayback(shouldPlay);
+  };
+
+  recordChoices.forEach((choice) => {
+    choice.addEventListener("click", () => selectVinyl(choice));
+    choice.addEventListener("dragstart", (event) => {
+      draggedChoice = choice;
+      event.dataTransfer.effectAllowed = "copy";
+      event.dataTransfer.setData("text/plain", choice.dataset.vinyl);
+    });
+    choice.addEventListener("dragend", () => {
+      draggedChoice = null;
+      tonearm.classList.remove("is-drop-target");
+    });
+  });
+
+  tonearm.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    tonearm.classList.add("is-drop-target");
+    event.dataTransfer.dropEffect = "copy";
+  });
+
+  tonearm.addEventListener("dragleave", () => tonearm.classList.remove("is-drop-target"));
+  tonearm.addEventListener("drop", (event) => {
+    event.preventDefault();
+    tonearm.classList.remove("is-drop-target");
+    selectVinyl(draggedChoice, true);
   });
 }
 
