@@ -3,66 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Esha FM | Esha Singaraju</title>
-    <meta name="description" content="Esha Singaraju writes, researches, builds, and occasionally DJs." />
+    <title>Esha FM | Work, Words, and After Hours</title>
+    <meta name="description" content="Esha Singaraju's personal frequency: work, writing, research, and DJing." />
     <link rel="icon" type="image/png" href="assets/finalfavicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400;75..125,600;75..125,700;75..125,800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=20260917" />
+    <link rel="stylesheet" href="style.css?v=20260908" />
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="page-shell">
       <header class="site-header">
-        <a class="brand" href="index.html" aria-label="Esha FM home">
-          <span class="brand-disc" aria-hidden="true"></span>
-          <span>Esha FM</span>
-        </a>
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a class="is-active" href="index.html">Home</a>
-          <a href="experience.html">Experience</a>
-          <a href="writing.html">Writing</a>
-          <a href="out-and-about.html">Out &amp; About</a>
+        <a class="brand" href="index.html" aria-label="Esha FM home">Esha FM</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a class="is-active" href="experience.html">Side A</a>
+          <a href="writing.html">Liner Notes</a>
+          <a href="out-and-about.html">Crate Digging</a>
+          <a href="mailto:eshasingaraju@gmail.com">Request Line</a>
         </nav>
-        <a class="header-contact" href="mailto:eshasingaraju@gmail.com">Say hello <span aria-hidden="true">&#8599;</span></a>
       </header>
 
-      <main id="main-content">
+      <main>
         <section class="home-hero reveal">
           <div class="hero-copy">
-            <p class="eyebrow"><span class="live-dot"></span>Broadcasting from Chapel Hill, NC</p>
-            <h1 class="intro-title">Hi, I’m<br /><em>Esha.</em></h1>
-            <p class="intro-copy intro-copy-lead">I’m curious about the systems that shape our lives, the stories we tell about them, and the tools we build to understand them.</p>
-            <p class="intro-copy">So I write, research, code, and occasionally DJ, making thoughtful things that feel alive, useful, and a little unexpected.</p>
-            <p class="intro-copy-small">UNC Chapel Hill &middot; Computer Science + Environmental Studies</p>
-          </div>
-
-          <div class="hero-studio">
-            <div class="portrait-wrap">
-              <img class="hero-portrait" src="assets/headshot.jpeg" alt="Esha Singaraju smiling in front of a blue mural" />
-              <p class="portrait-caption">Host, writer, researcher,<br />occasional DJ</p>
+            <div class="bio-copy">
+              <p class="eyebrow"><span class="live-dot"></span>On air from Chapel Hill</p>
+              <h1 class="intro-title">Hi!<br />I'm Esha.</h1>
+              <p class="intro-copy intro-copy-lead">I'm curious about the systems shaping our lives, the stories we tell, and the tools that help us understand them.</p>
+              <p class="intro-copy">So I write, research, code, and occasionally DJ, making thoughtful things that feel alive, useful, and a little unexpected.</p>
+              <p class="intro-copy intro-copy-small">I'm a senior at UNC Chapel Hill pursuing Computer Science and Environmental Studies.</p>
             </div>
-            <button class="hero-record" type="button" data-record-player aria-pressed="false" aria-label="Play the Esha FM record">
-              <span class="record-grooves" aria-hidden="true"><span class="record-label">ESHA<br />FM</span></span>
-              <span class="record-instruction" data-record-status>Click to spin</span>
-            </button>
+            <div class="hero-photo-panel"><img class="hero-portrait" src="assets/headshot.jpeg" alt="Portrait of Esha Singaraju" /></div>
+          </div>
+          <div class="turntable" data-turntable aria-label="Interactive turntable: drag the needle onto the record to start it">
+            <span class="turntable-plinth"></span>
+            <span class="vinyl" data-active-vinyl="esha-fm" data-label="ESHA FM"></span>
+            <button class="tonearm" type="button" aria-label="Drag the tonearm onto or off the record" aria-pressed="false"></button>
+            <span class="rpm" data-turntable-status>Place needle to play</span>
+            <div class="vinyl-selector" aria-label="Choose a record">
+              <button class="vinyl-choice is-selected" type="button" draggable="true" data-vinyl="esha-fm" data-label="ESHA FM" aria-pressed="true"><span></span><b>Esha FM</b></button>
+              <button class="vinyl-choice" type="button" draggable="true" data-vinyl="blue-hour" data-label="BLUE HOUR" aria-pressed="false"><span></span><b>Blue hour</b></button>
+              <button class="vinyl-choice" type="button" draggable="true" data-vinyl="golden-hour" data-label="GOLDEN HOUR" aria-pressed="false"><span></span><b>Golden hour</b></button>
+            </div>
           </div>
         </section>
 
-        <section class="station-strip" aria-label="Station identification">
-          <p>Now on air</p>
-          <p class="station-message">Work in progress, stories in motion, good music somewhere nearby.</p>
-          <p>EST. 2026</p>
+        <section class="now-playing reveal" aria-label="Now playing">
+          <p class="now-label">Now playing</p>
+          <p class="now-track" aria-label="Now playing placeholder"></p>
         </section>
 
+        <section class="reveal">
+          <div class="section-head">
+            <h2>In the crate</h2>
+            <p>Pick a record to explore</p>
+          </div>
+          <div class="record-grid" aria-label="Record crate navigation">
+            <a class="record-link record-side-a" href="experience.html">
+              <div class="record-cover cover-side-a" aria-hidden="true"></div>
+              <div class="record-info"><p class="section-kicker">01 / Side A</p><h3>On the record</h3></div>
+            </a>
+            <a class="record-link record-notes" href="writing.html">
+              <div class="record-cover cover-notes" aria-hidden="true"></div>
+              <div class="record-info"><p class="section-kicker">02 / Liner Notes</p><h3>In the margins</h3></div>
+            </a>
+            <a class="record-link record-crate-digging" href="out-and-about.html">
+              <div class="record-cover cover-crate" aria-hidden="true"></div>
+              <div class="record-info"><p class="section-kicker">03 / Crate Digging</p><h3>After hours</h3></div>
+            </a>
+          </div>
+        </section>
+
+        <section class="about-panel reveal">
+          <div class="about-copy">
+            <p class="section-kicker">The person behind the set</p>
+            <h2>Good ideas, loudly considered.</h2>
+            <p>I'm a junior at UNC Chapel Hill studying Computer Science and Environmental Studies. I care about thoughtful systems, sharper stories, and making work that feels alive.</p>
+          </div>
+        </section>
       </main>
 
-      <footer class="site-footer">
-        <span>&copy; 2026 Esha Singaraju</span>
-        <span>Made with curiosity in Chapel Hill</span>
-      </footer>
+      <footer class="site-footer"><span>Esha FM / All signal, no static</span><a href="mailto:eshasingaraju@gmail.com">Say hello</a></footer>
     </div>
-    <script src="script.js?v=20260917"></script>
+    <script src="script.js?v=20260908"></script>
   </body>
 </html>

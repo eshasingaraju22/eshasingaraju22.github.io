@@ -1,5 +1,54 @@
 document.body.classList.add("has-motion");
 
+const siteLoader = document.createElement("div");
+siteLoader.className = "site-loader";
+siteLoader.setAttribute("role", "status");
+siteLoader.setAttribute("aria-label", "Loading Esha FM");
+siteLoader.innerHTML = '<span class="loader-vinyl" aria-hidden="true"></span><p>Loading Esha FM</p>';
+document.body.prepend(siteLoader);
+document.body.classList.add("is-loading");
+
+const showLoader = () => {
+  siteLoader.classList.remove("is-hidden");
+  document.body.classList.add("is-loading");
+};
+
+const hideLoader = () => {
+  siteLoader.classList.add("is-hidden");
+  document.body.classList.remove("is-loading");
+};
+
+window.addEventListener("load", () => window.setTimeout(hideLoader, 160));
+window.addEventListener("pageshow", hideLoader);
+
+// Keep page transitions feeling like a station change, including cached navigations.
+document.querySelectorAll('a[href]').forEach((link) => {
+  const destination = new URL(link.href, window.location.href);
+
+  if (
+    destination.origin !== window.location.origin ||
+    destination.pathname === window.location.pathname ||
+    link.target === "_blank"
+  ) {
+    return;
+  }
+
+  link.addEventListener("click", (event) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+
+    showLoader();
+  });
+});
+
+const previewTabs = document.querySelectorAll(".preview-tab");
+const previewOverline = document.getElementById("preview-overline");
+const previewTitle = document.getElementById("preview-title");
+const previewDescription = document.getElementById("preview-description");
+const previewList = document.getElementById("preview-list");
+const previewCta = document.getElementById("preview-cta");
+
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -32,16 +81,181 @@ const initReveals = (scope = document) => {
 
 initReveals();
 
-const recordPlayer = document.querySelector("[data-record-player]");
+const turntable = document.querySelector("[data-turntable]");
 
-if (recordPlayer) {
-  const status = recordPlayer.querySelector("[data-record-status]");
+if (turntable) {
+  const tonearm = turntable.querySelector(".tonearm");
+  const vinyl = turntable.querySelector(".vinyl");
+  const status = turntable.querySelector("[data-turntable-status]");
+  const recordChoices = Array.from(turntable.querySelectorAll(".vinyl-choice"));
+  let isDraggingTonearm = false;
+  let draggedChoice = null;
 
-  recordPlayer.addEventListener("click", () => {
-    const isPlaying = recordPlayer.classList.toggle("is-playing");
-    recordPlayer.setAttribute("aria-pressed", String(isPlaying));
-    recordPlayer.setAttribute("aria-label", isPlaying ? "Stop the Esha FM record" : "Play the Esha FM record");
-    status.textContent = isPlaying ? "Now spinning" : "Click to spin";
+  const setPlayback = (isPlaying) => {
+    turntable.classList.toggle("is-playing", isPlaying);
+    tonearm.setAttribute("aria-pressed", String(isPlaying));
+    status.textContent = isPlaying ? "Now spinning / 33 1/3 RPM" : "Place needle to play";
+  };
+
+  const cueTonearm = (event) => {
+    const tableRect = turntable.getBoundingClientRect();
+    const pivotX = tableRect.right - tableRect.width * 0.09;
+    const pivotY = tableRect.top + tableRect.height * 0.13;
+    const dx = event.clientX - pivotX;
+    const dy = event.clientY - pivotY;
+    const rawAngle = (Math.atan2(-dy, -dx) * 180) / Math.PI;
+    const normalizedAngle = rawAngle < 0 ? rawAngle + 360 : rawAngle;
+    const angle = Math.min(345, Math.max(270, normalizedAngle));
+    const recordRect = vinyl.getBoundingClientRect();
+    const needleLength = tonearm.offsetWidth;
+    const radians = (angle * Math.PI) / 180;
+    const needleX = pivotX - needleLength * Math.cos(radians);
+    const needleY = pivotY - needleLength * Math.sin(radians);
+    const recordX = recordRect.left + recordRect.width / 2;
+    const recordY = recordRect.top + recordRect.height / 2;
+    const isOnRecord = Math.hypot(needleX - recordX, needleY - recordY) < recordRect.width / 2;
+
+    tonearm.style.setProperty("--arm-angle", `${angle.toFixed(1)}deg`);
+    setPlayback(isOnRecord);
+  };
+
+  tonearm.addEventListener("pointerdown", (event) => {
+    isDraggingTonearm = true;
+    tonearm.setPointerCapture(event.pointerId);
+    cueTonearm(event);
+  });
+
+  tonearm.addEventListener("pointermove", (event) => {
+    if (isDraggingTonearm) {
+      cueTonearm(event);
+    }
+  });
+
+  const releaseTonearm = (event) => {
+    if (!isDraggingTonearm) {
+      return;
+    }
+
+    isDraggingTonearm = false;
+    tonearm.releasePointerCapture(event.pointerId);
+  };
+
+  tonearm.addEventListener("pointerup", releaseTonearm);
+  tonearm.addEventListener("pointercancel", releaseTonearm);
+  tonearm.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") {
+      return;
+    }
+
+    event.preventDefault();
+    setPlayback(!turntable.classList.contains("is-playing"));
+  });
+
+  const selectVinyl = (choice, shouldPlay = false) => {
+    if (!choice) {
+      return;
+    }
+
+    recordChoices.forEach((recordChoice) => {
+      const isSelected = recordChoice === choice;
+      recordChoice.classList.toggle("is-selected", isSelected);
+      recordChoice.setAttribute("aria-pressed", String(isSelected));
+    });
+
+    vinyl.dataset.activeVinyl = choice.dataset.vinyl;
+    vinyl.dataset.label = choice.dataset.label;
+    setPlayback(shouldPlay);
+  };
+
+  recordChoices.forEach((choice) => {
+    choice.addEventListener("click", () => selectVinyl(choice));
+    choice.addEventListener("dragstart", (event) => {
+      draggedChoice = choice;
+      event.dataTransfer.effectAllowed = "copy";
+      event.dataTransfer.setData("text/plain", choice.dataset.vinyl);
+    });
+    choice.addEventListener("dragend", () => {
+      draggedChoice = null;
+      tonearm.classList.remove("is-drop-target");
+    });
+  });
+
+  tonearm.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    tonearm.classList.add("is-drop-target");
+    event.dataTransfer.dropEffect = "copy";
+  });
+
+  tonearm.addEventListener("dragleave", () => tonearm.classList.remove("is-drop-target"));
+  tonearm.addEventListener("drop", (event) => {
+    event.preventDefault();
+    tonearm.classList.remove("is-drop-target");
+    selectVinyl(draggedChoice, true);
+  });
+}
+
+const previewContent = {
+  experience: {
+    overline: "Preview",
+    title: "Experience",
+    description:
+      "Some of the places I've spent my time lately, from internships to research, in Chapel Hill and beyond!",
+    items: [],
+    href: "experience.html",
+    ctaClass: "preview-cta-experience",
+  },
+  writing: {
+    overline: "Preview",
+    title: "Writing",
+    description:
+      "A small shelf of things I've written, mostly for the Daily Tar Heel! I'm hoping to start a blog so stay tuned :)",
+    items: [],
+    href: "writing.html",
+    ctaClass: "preview-cta-writing",
+  },
+  "out-and-about": {
+    overline: "Preview",
+    title: "Out & About",
+    description:
+      "I'm grateful to have been featured in speaking engagements and articles at UNC. This is a space to collect the conversations, events, and moments where my work has shown up publicly.",
+    items: [],
+    href: "out-and-about.html",
+    ctaClass: "preview-cta-out-and-about",
+  },
+};
+
+if (
+  previewTabs.length > 0 &&
+  previewOverline &&
+  previewTitle &&
+  previewDescription &&
+  previewList &&
+  previewCta
+) {
+  const updatePreview = (key) => {
+    const content = previewContent[key];
+    if (!content) {
+      return;
+    }
+
+    previewTabs.forEach((tab) => {
+      tab.classList.toggle("is-active", tab.dataset.preview === key);
+    });
+
+    previewOverline.textContent = content.overline;
+    previewTitle.textContent = content.title;
+    previewDescription.textContent = content.description;
+    previewList.innerHTML = content.items.map((item) => `<li>${item}</li>`).join("");
+    previewList.style.display = content.items.length > 0 ? "block" : "none";
+    previewCta.href = content.href;
+    previewCta.textContent = "Click to see more!";
+    previewCta.className = `preview-cta ${content.ctaClass}`;
+  };
+
+  previewTabs.forEach((tab) => {
+    const key = tab.dataset.preview;
+    tab.addEventListener("mouseenter", () => updatePreview(key));
+    tab.addEventListener("focus", () => updatePreview(key));
   });
 }
 
