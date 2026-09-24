@@ -71,10 +71,10 @@ h1, h2, h3, p { margin-top: 0; }
 .turntable-context strong { display: block; margin-top: 0.15rem; font-size: 0.78rem; line-height: 0.95; letter-spacing: -0.035em; text-transform: uppercase; }
 .rpm { position: absolute; right: 1.5rem; bottom: 1.8rem; font-family: var(--mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; }
 @keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-.vinyl-selector { position: absolute; z-index: 4; bottom: 4.15rem; left: 50%; display: grid; grid-template-columns: repeat(3, 52px); justify-content: center; gap: 0.5rem 0.8rem; width: calc(100% - 1.2rem); transform: translateX(-50%); }
+.vinyl-selector { position: absolute; z-index: 4; bottom: 3.35rem; left: 50%; display: grid; grid-template-columns: repeat(3, 68px); justify-content: center; gap: 0.5rem 1rem; width: calc(100% - 1.2rem); transform: translateX(-50%); }
 .vinyl-choice { --choice-record: var(--ink); --choice-groove: var(--groove); display: grid; min-width: 0; justify-items: center; gap: 0.22rem; padding: 0; border: 0; background: transparent; color: var(--ink); cursor: grab; font-family: var(--mono); font-size: 0.42rem; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; }
 .vinyl-choice:active { cursor: grabbing; }
-.vinyl-choice span { position: relative; display: block; width: 52px; aspect-ratio: 1; border: var(--line); border-radius: 50%; background: var(--choice-record); box-shadow: inset 0 0 0 11px var(--choice-record), inset 0 0 0 12px var(--choice-groove), inset 0 0 0 19px var(--choice-record), inset 0 0 0 20px var(--choice-groove); transition: transform 0.18s ease, filter 0.18s ease; }
+.vinyl-choice span { position: relative; display: block; width: 68px; aspect-ratio: 1; border: var(--line); border-radius: 50%; background: var(--choice-record); box-shadow: inset 0 0 0 14px var(--choice-record), inset 0 0 0 15px var(--choice-groove), inset 0 0 0 24px var(--choice-record), inset 0 0 0 25px var(--choice-groove); transition: transform 0.18s ease, filter 0.18s ease; }
 .vinyl-choice span img { position: absolute; top: 50%; left: 50%; width: 45%; aspect-ratio: 1; border: 1px solid var(--ink); border-radius: 50%; object-fit: cover; transform: translate(-50%, -50%); }
 .vinyl-choice[data-vinyl="hbo"] { --choice-record: #111824; --choice-groove: #576274; }
 .vinyl-choice[data-vinyl="credit-karma"] { --choice-record: #087e13; --choice-groove: #8ac78c; }
@@ -239,7 +239,7 @@ h1, h2, h3, p { margin-top: 0; }
   .hero-photo-panel { height: 220px; }
   .intro-copy { font-size: 1.08rem; }
   .turntable { min-height: 580px; border-top: var(--line); border-left: 0; }
-  .vinyl-selector { bottom: 4.25rem; left: 50%; }
+  .vinyl-selector { bottom: 3.35rem; left: 50%; }
   .page-hero { gap: 1.2rem; }
   .experience-page-hero { gap: 1.15rem; padding: 1.75rem 0; }
   .experience-page-hero .page-title { font-size: clamp(2.8rem, 13vw, 4.2rem); white-space: normal; }
