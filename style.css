@@ -229,7 +229,7 @@ h1, h2, h3, p { margin-top: 0; }
 .writing-card-media img { width: 100%; height: 100%; object-fit: cover; }
 .writing-card-tag { padding: 0.9rem 0.9rem 0; }
 .writing-card-date { padding: 0.35rem 0.9rem 0; color: var(--tomato); }
-.writing-card h2 { margin: 0.55rem 0.9rem 1.1rem; font-size: 1.42rem; line-height: 0.93; letter-spacing: -0.065em; }
+.writing-card h2 { margin: 0.55rem 0.9rem 1.1rem; font-size: 1.42rem; line-height: 0.98; letter-spacing: -0.035em; }
 .writing-pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 2rem; }
 .pagination-button, .pagination-number { min-width: 2.4rem; min-height: 2.4rem; border: var(--line); background: var(--paper); color: var(--ink); cursor: pointer; font-family: var(--mono); font-size: 0.7rem; font-weight: 700; }
 .pagination-button:hover, .pagination-number:hover, .pagination-number.is-active { background: var(--ink); color: var(--paper); }
@@ -238,8 +238,8 @@ h1, h2, h3, p { margin-top: 0; }
 .event-card { display: flex; flex-direction: column; overflow: hidden; border: var(--line); background: var(--paper); }
 .event-card:nth-child(3n + 1) { background: var(--mist); }
 .event-card:nth-child(3n + 2) { background: var(--yellow); }
-.event-card:nth-child(3n) { background: var(--tomato); color: var(--paper); }
-.event-card:nth-child(3n) .event-date { color: var(--yellow); }
+.event-card:nth-child(3n) { background: var(--tomato); color: var(--ink); }
+.event-card:nth-child(3n) .event-date { color: var(--ink); }
 .event-card img { width: 100%; height: 210px; object-fit: cover; border-bottom: var(--line); }
 .event-card-copy { padding: 1rem; }
 .event-card h2 { margin: 0.45rem 0 0.75rem; font-size: 1.48rem; line-height: 0.92; letter-spacing: -0.065em; text-transform: uppercase; }
