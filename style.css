@@ -139,6 +139,9 @@ h1, h2, h3, p { margin-top: 0; }
 .career-vinyl-hbo { --career-record: #111824; --career-groove: #576274; }
 .career-vinyl-ck { --career-record: #087e13; --career-groove: #8ac78c; }
 .career-vinyl-irmii { --career-record: #245f8d; --career-groove: #a3d2eb; }
+.career-vinyl-wxyc { --career-record: #b86ba5; --career-groove: #efb3ca; }
+.career-vinyl-comp { --career-record: #188fbd; --career-groove: #a9dcf0; }
+.career-vinyl-sdis { --career-record: #4e98c8; --career-groove: #badff2; }
 .career-vinyl-label { display: grid; width: 42%; aspect-ratio: 1; place-items: center; overflow: hidden; border: var(--line); border-radius: 50%; background: var(--paper); }
 .career-vinyl-label img { width: 100%; height: 100%; object-fit: cover; }
 .career-record:hover .career-vinyl-stage, .career-record:focus-visible .career-vinyl-stage { transform: translateY(-8px); box-shadow: 10px 13px 0 rgba(21, 32, 59, 0.3); }
@@ -159,6 +162,15 @@ h1, h2, h3, p { margin-top: 0; }
 .experience-panel-image { background: var(--paper); }
 .experience-panel-image img { max-height: 500px; }
 .experience-panel-research img { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; object-fit: cover; object-position: 78% center; }
+.experience-panel-wxyc { isolation: isolate; background: var(--ink); }
+.experience-panel-wxyc::after { content: ""; position: absolute; z-index: 1; inset: 0; background: rgba(21, 32, 59, 0.52); }
+.experience-panel-wxyc .experience-panel-backdrop { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; object-fit: cover; filter: saturate(0.82); }
+.experience-panel-wxyc video { position: relative; z-index: 2; width: min(62%, 240px); height: 86%; max-height: 440px; border: var(--line); background: #05080d; box-shadow: 8px 9px 0 rgba(21, 32, 59, 0.58); object-fit: contain; }
+.experience-panel-wxyc figcaption { z-index: 3; }
+.experience-panel-brand { background: #299ac7; }
+.experience-panel-brand img { width: min(78%, 360px); height: auto; max-height: none; border: var(--line); object-fit: contain; box-shadow: 8px 9px 0 rgba(21, 32, 59, 0.24); }
+.experience-panel-comp { background: #2298c9; }
+.experience-panel-sdis { background: #55a2d0; }
 .experience-panel-media figcaption { position: absolute; right: 0.75rem; bottom: 0.75rem; left: 0.75rem; padding: 0.55rem 0.65rem; background: var(--ink); color: var(--paper); font-family: var(--mono); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
 .experience-panel-copy { align-self: center; padding: clamp(1.5rem, 4vw, 3.3rem); }
 .experience-track { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 0.65rem; }
@@ -175,6 +187,8 @@ h1, h2, h3, p { margin-top: 0; }
 .experience-metrics strong { display: block; margin-bottom: 0.15rem; color: var(--tomato); font-family: var(--sans); font-size: 1.25rem; letter-spacing: -0.05em; }
 .experience-read-more { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1rem; padding: 0.65rem 0.8rem; border: var(--line); background: var(--tomato); color: var(--paper); font-family: var(--mono); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.05em; text-decoration: none; text-transform: uppercase; }
 .experience-read-more:hover, .experience-read-more:focus-visible { background: var(--yellow); color: var(--ink); outline: none; }
+.experience-showtime { margin: 1rem 0 0; padding: 0.65rem 0.75rem; border: var(--line); background: var(--yellow); font-family: var(--mono); font-size: 0.66rem; font-weight: 700; line-height: 1.35; letter-spacing: 0.04em; text-transform: uppercase; }
+.experience-showtime strong { color: var(--tomato); }
 .experience-skills { margin-top: 1rem; font-family: var(--mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
 @keyframes liner-notes-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes career-record-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
@@ -235,6 +249,8 @@ h1, h2, h3, p { margin-top: 0; }
   .experience-panel { grid-template-columns: 1fr; }
   .experience-panel-media { min-height: 360px; border-right: 0; border-bottom: var(--line); }
   .experience-panel-media img, .experience-panel-media video, .experience-panel-video video, .experience-panel-image img { max-height: 420px; }
+  .experience-panel-wxyc video { width: min(55%, 210px); height: 86%; }
+  .experience-panel-brand img { width: min(72%, 310px); height: auto; }
   .experience-panel-copy { padding: 1.5rem 1.15rem; }
   .experience-panel h2 { font-size: 1.75rem; line-height: 0.9; }
   .experience-track { display: block; }

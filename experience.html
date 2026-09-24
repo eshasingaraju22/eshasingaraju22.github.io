@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400;75..125,600;75..125,700;75..125,800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=20260923-records-5" />
+    <link rel="stylesheet" href="style.css?v=20260923-records-6" />
   </head>
   <body>
     <div class="page-shell">
@@ -60,6 +60,30 @@
                 </span>
               </span>
               <span class="career-record-meta"><span>Track 03</span><strong>UNC IRMII</strong><small>Research</small></span>
+            </button>
+            <button class="career-record" type="button" data-experience-record="wxyc" aria-expanded="false" aria-controls="experience-wxyc">
+              <span class="career-vinyl-stage" aria-hidden="true">
+                <span class="career-vinyl career-vinyl-wxyc">
+                  <span class="career-vinyl-label"><img src="assets/wxyc-logo.png" alt="" /></span>
+                </span>
+              </span>
+              <span class="career-record-meta"><span>Track 04</span><strong>WXYC</strong><small>Radio + Technology</small></span>
+            </button>
+            <button class="career-record" type="button" data-experience-record="comp-210" aria-expanded="false" aria-controls="experience-comp-210">
+              <span class="career-vinyl-stage" aria-hidden="true">
+                <span class="career-vinyl career-vinyl-comp">
+                  <span class="career-vinyl-label"><img src="assets/unc-comp-sci.png" alt="" /></span>
+                </span>
+              </span>
+              <span class="career-record-meta"><span>Track 05</span><strong>COMP 210</strong><small>Teaching</small></span>
+            </button>
+            <button class="career-record" type="button" data-experience-record="sdis" aria-expanded="false" aria-controls="experience-sdis">
+              <span class="career-vinyl-stage" aria-hidden="true">
+                <span class="career-vinyl career-vinyl-sdis">
+                  <span class="career-vinyl-label"><img src="assets/unc-sdis.png" alt="" /></span>
+                </span>
+              </span>
+              <span class="career-record-meta"><span>Track 06</span><strong>UNC SDIS</strong><small>Career Support</small></span>
             </button>
           </div>
 
@@ -130,6 +154,75 @@
                 </div>
                 <a class="experience-read-more" href="https://www.unc.edu/posts/2025/10/24/junior-builds-algorithm-to-aid-disaster-recovery/" target="_blank" rel="noopener">Read the UNC feature <span aria-hidden="true">↗</span></a>
                 <div class="experience-skills">Python / machine learning / GIS / data pipelines</div>
+              </div>
+            </article>
+
+            <article class="experience-panel" id="experience-wxyc" data-experience-panel="wxyc" hidden>
+              <figure class="experience-panel-media experience-panel-wxyc">
+                <img class="experience-panel-backdrop" src="assets/wxyc-booth.jpg" alt="WXYC broadcast booth at UNC" />
+                <video controls playsinline preload="metadata" poster="assets/wxyc-requests-poster.png" aria-label="WXYC Requests mobile app demo">
+                  <source src="assets/wxyc-requests.m4v" type="video/mp4" />
+                  Your browser does not support embedded video.
+                </video>
+                <figcaption>WXYC Requests / live from the booth</figcaption>
+              </figure>
+              <div class="experience-panel-copy">
+                <div class="experience-track"><p class="track-number">Track 04 / Radio + Technology</p><p class="role-meta">August 2023 - Present / Chapel Hill, NC</p></div>
+                <h2>Disc Jockey &amp; Technology Team Member</h2>
+                <p class="experience-company">WXYC · UNC's student-run radio station</p>
+                <p class="experience-summary">I've hosted a regular show since August 2023 and joined the technology team in August 2024, where I turned a scattered listener-request process into one shared product for the station.</p>
+                <ul class="experience-highlights">
+                  <li>Saw that music requests were split across calls, emails, and social posts, then designed one pipeline that made them easier for both listeners to send and DJs to manage.</li>
+                  <li>Built WXYC Requests, a React app used by 5,000+ weekly listeners to send real-time song requests directly to the booth.</li>
+                  <li>Ran rapid feedback loops with 15 DJs and 50+ listeners, turning edge cases into a prioritized backlog and iterative releases that drove station-wide adoption within one semester.</li>
+                </ul>
+                <div class="experience-metrics experience-metrics-three" aria-label="WXYC impact">
+                  <span><strong>5,000+</strong> weekly listeners</span><span><strong>15</strong> DJs interviewed</span><span><strong>50+</strong> listener testers</span>
+                </div>
+                <p class="experience-showtime"><strong>Fall 2026:</strong> On air every other Wednesday from 5-7 PM.</p>
+                <a class="experience-read-more" href="https://wxyc.org/" target="_blank" rel="noopener">Tune in to WXYC <span aria-hidden="true">↗</span></a>
+                <div class="experience-skills">React / product discovery / user research / radio</div>
+              </div>
+            </article>
+
+            <article class="experience-panel" id="experience-comp-210" data-experience-panel="comp-210" hidden>
+              <figure class="experience-panel-media experience-panel-brand experience-panel-comp">
+                <img src="assets/unc-comp-sci.png" alt="UNC Department of Computer Science" />
+                <figcaption>COMP 210 / Data Structures and Algorithms</figcaption>
+              </figure>
+              <div class="experience-panel-copy">
+                <div class="experience-track"><p class="track-number">Track 05 / Teaching</p><p class="role-meta">August 2026 - Present / Chapel Hill, NC</p></div>
+                <h2>Undergraduate Teaching Assistant</h2>
+                <p class="experience-company">UNC Department of Computer Science</p>
+                <p class="experience-summary">I help make a foundational computer science course feel more navigable by turning abstract concepts into explainable steps and helping students debug both their code and their thinking.</p>
+                <ul class="experience-highlights">
+                  <li>Teach 186 students Python, Java, data structures, and object-oriented programming.</li>
+                  <li>Guide students through inheritance, algorithmic problem-solving, complex programming assignments, debugging, and code review.</li>
+                  <li>Provide technical mentorship and individualized feedback that helps students strengthen their reasoning and communicate how their code works.</li>
+                </ul>
+                <div class="experience-metrics experience-metrics-three" aria-label="COMP 210 teaching">
+                  <span><strong>186</strong> students</span><span><strong>Python</strong> foundations</span><span><strong>Java</strong> data structures</span>
+                </div>
+                <div class="experience-skills">Python / Java / data structures / mentorship</div>
+              </div>
+            </article>
+
+            <article class="experience-panel" id="experience-sdis" data-experience-panel="sdis" hidden>
+              <figure class="experience-panel-media experience-panel-brand experience-panel-sdis">
+                <img src="assets/unc-sdis.png" alt="UNC School of Data and Information Sciences" />
+                <figcaption>Student career support</figcaption>
+              </figure>
+              <div class="experience-panel-copy">
+                <div class="experience-track"><p class="track-number">Track 06 / Career Support</p><p class="role-meta">August 2026 - Present / Chapel Hill, NC</p></div>
+                <h2>Career Assistant</h2>
+                <p class="experience-company">UNC School of Data and Information Sciences</p>
+                <p class="experience-summary">I help students make the messy parts of recruiting more navigable, from deciding what belongs on a resume to practicing how to explain their work in an interview.</p>
+                <ul class="experience-highlights">
+                  <li>Conduct mock behavioral and technical interviews, giving students specific feedback on their answers, communication, and problem-solving approach.</li>
+                  <li>Review resumes and help students translate coursework, projects, and experience into clearer, more compelling applications.</li>
+                  <li>Support departmental recruiter events and help students navigate internship and job searches, networking, interview preparation, and the recruiting process.</li>
+                </ul>
+                <div class="experience-skills">Interview preparation / resume review / recruiting events / student mentorship</div>
               </div>
             </article>
           </div>
