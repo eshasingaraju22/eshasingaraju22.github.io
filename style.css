@@ -68,10 +68,10 @@ h1, h2, h3, p { margin-top: 0; }
 .tonearm.is-drop-target::after { background: var(--paper); box-shadow: 0 0 0 5px rgba(255, 251, 238, 0.45); }
 .rpm { position: absolute; right: 1.5rem; bottom: 1.8rem; font-family: var(--mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; }
 @keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-.vinyl-selector { position: absolute; z-index: 4; bottom: 4.15rem; left: 50%; display: flex; width: calc(100% - 1.2rem); justify-content: center; gap: 0.25rem; transform: translateX(-50%); }
+.vinyl-selector { position: absolute; z-index: 4; bottom: 4.15rem; left: 50%; display: grid; grid-template-columns: repeat(3, 52px); justify-content: center; gap: 0.5rem 0.8rem; width: calc(100% - 1.2rem); transform: translateX(-50%); }
 .vinyl-choice { --choice-record: var(--ink); --choice-groove: var(--groove); display: grid; min-width: 0; justify-items: center; gap: 0.22rem; padding: 0; border: 0; background: transparent; color: var(--ink); cursor: grab; font-family: var(--mono); font-size: 0.42rem; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; }
 .vinyl-choice:active { cursor: grabbing; }
-.vinyl-choice span { position: relative; display: block; width: 38px; aspect-ratio: 1; border: var(--line); border-radius: 50%; background: var(--choice-record); box-shadow: inset 0 0 0 8px var(--choice-record), inset 0 0 0 9px var(--choice-groove), inset 0 0 0 14px var(--choice-record), inset 0 0 0 15px var(--choice-groove); transition: transform 0.18s ease, filter 0.18s ease; }
+.vinyl-choice span { position: relative; display: block; width: 52px; aspect-ratio: 1; border: var(--line); border-radius: 50%; background: var(--choice-record); box-shadow: inset 0 0 0 11px var(--choice-record), inset 0 0 0 12px var(--choice-groove), inset 0 0 0 19px var(--choice-record), inset 0 0 0 20px var(--choice-groove); transition: transform 0.18s ease, filter 0.18s ease; }
 .vinyl-choice span img { position: absolute; top: 50%; left: 50%; width: 45%; aspect-ratio: 1; border: 1px solid var(--ink); border-radius: 50%; object-fit: cover; transform: translate(-50%, -50%); }
 .vinyl-choice[data-vinyl="hbo"] { --choice-record: #111824; --choice-groove: #576274; }
 .vinyl-choice[data-vinyl="credit-karma"] { --choice-record: #087e13; --choice-groove: #8ac78c; }
