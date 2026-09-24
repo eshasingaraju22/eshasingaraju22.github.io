@@ -64,7 +64,7 @@ h1, h2, h3, p { margin-top: 0; }
 .tonearm.is-drop-target::after { background: var(--paper); box-shadow: 0 0 0 5px rgba(255, 251, 238, 0.45); }
 .rpm { position: absolute; right: 1.5rem; bottom: 1.8rem; font-family: var(--mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; }
 @keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-.vinyl-selector { position: absolute; z-index: 4; bottom: 1rem; left: 1rem; display: flex; gap: 0.45rem; }
+.vinyl-selector { position: absolute; z-index: 4; bottom: 4.25rem; left: 1rem; display: flex; gap: 0.45rem; }
 .vinyl-choice { display: grid; gap: 0.25rem; padding: 0; border: 0; background: transparent; color: var(--ink); cursor: grab; font-family: var(--mono); font-size: 0.48rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; }
 .vinyl-choice:active { cursor: grabbing; }
 .vinyl-choice span { display: block; width: 44px; aspect-ratio: 1; border: var(--line); border-radius: 50%; background: var(--ink); box-shadow: inset 0 0 0 10px var(--ink), inset 0 0 0 11px var(--groove), inset 0 0 0 17px var(--ink), inset 0 0 0 18px var(--groove); }
@@ -166,8 +166,8 @@ h1, h2, h3, p { margin-top: 0; }
   .hero-copy { grid-template-columns: minmax(0, 1fr) 160px; gap: 1rem; padding: 1.75rem 1.1rem; }
   .hero-photo-panel { height: 220px; }
   .intro-copy { font-size: 1.08rem; }
-  .turntable { min-height: 350px; border-top: var(--line); border-left: 0; }
-  .vinyl-selector { bottom: 0.7rem; left: 0.7rem; }
+  .turntable { min-height: 450px; border-top: var(--line); border-left: 0; }
+  .vinyl-selector { bottom: 4.25rem; left: 0.7rem; }
   .page-hero { gap: 1.2rem; }
   .label-disc { justify-self: start; width: 120px; }
   .label-disc::before { margin: 29px auto; }
