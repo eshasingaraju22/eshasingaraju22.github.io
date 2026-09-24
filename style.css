@@ -213,6 +213,12 @@ h1, h2, h3, p { margin-top: 0; }
 .experience-showtime { margin: 1rem 0 0; padding: 0.65rem 0.75rem; border: var(--line); background: var(--yellow); font-family: var(--mono); font-size: 0.66rem; font-weight: 700; line-height: 1.35; letter-spacing: 0.04em; text-transform: uppercase; }
 .experience-showtime strong { color: var(--tomato); }
 .experience-skills { margin-top: 1rem; font-family: var(--mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.home-contact { display: flex; align-items: center; justify-content: center; gap: 0.55rem; padding: 1.05rem 0 1.2rem; }
+.home-contact a { color: var(--ink); text-decoration: none; }
+.home-contact-email { padding: 0.48rem 0.65rem; border: var(--line); font-family: var(--mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.04em; }
+.home-social-link { display: grid; width: 34px; aspect-ratio: 1; place-items: center; border: var(--line); }
+.home-social-link svg { width: 17px; height: 17px; fill: currentColor; }
+.home-contact a:hover, .home-contact a:focus-visible { background: var(--yellow); outline: none; }
 @keyframes liner-notes-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes career-record-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .writing-archive { padding: 1.5rem 0 4rem; }
