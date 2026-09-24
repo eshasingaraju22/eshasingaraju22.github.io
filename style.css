@@ -66,6 +66,9 @@ h1, h2, h3, p { margin-top: 0; }
 .tonearm::before { content: ""; position: absolute; top: -12px; right: -11px; width: 20px; height: 20px; border: var(--line); border-radius: 50%; background: var(--tomato); }
 .tonearm::after { content: ""; position: absolute; top: -15px; left: -7px; width: 17px; height: 25px; border: var(--line); background: var(--yellow); }
 .tonearm.is-drop-target::after { background: var(--paper); box-shadow: 0 0 0 5px rgba(255, 251, 238, 0.45); }
+.turntable-context { position: absolute; z-index: 4; top: calc(var(--deck-top) + 16.35rem); left: 50%; width: calc(100% - 1.5rem); margin: 0; text-align: center; transform: translateX(-50%); }
+.turntable-context span { display: block; font-family: var(--mono); font-size: 0.48rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
+.turntable-context strong { display: block; margin-top: 0.15rem; font-size: 0.78rem; line-height: 0.95; letter-spacing: -0.035em; text-transform: uppercase; }
 .rpm { position: absolute; right: 1.5rem; bottom: 1.8rem; font-family: var(--mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; }
 @keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 .vinyl-selector { position: absolute; z-index: 4; bottom: 4.15rem; left: 50%; display: grid; grid-template-columns: repeat(3, 52px); justify-content: center; gap: 0.5rem 0.8rem; width: calc(100% - 1.2rem); transform: translateX(-50%); }
@@ -235,7 +238,7 @@ h1, h2, h3, p { margin-top: 0; }
   .hero-copy { grid-template-columns: minmax(0, 1fr) 160px; gap: 1rem; padding: 1.75rem 1.1rem; }
   .hero-photo-panel { height: 220px; }
   .intro-copy { font-size: 1.08rem; }
-  .turntable { min-height: 450px; border-top: var(--line); border-left: 0; }
+  .turntable { min-height: 580px; border-top: var(--line); border-left: 0; }
   .vinyl-selector { bottom: 4.25rem; left: 50%; }
   .page-hero { gap: 1.2rem; }
   .experience-page-hero { gap: 1.15rem; padding: 1.75rem 0; }

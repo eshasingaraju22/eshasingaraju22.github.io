@@ -88,6 +88,8 @@ if (turntable) {
   const vinyl = turntable.querySelector(".vinyl");
   const vinylLogo = turntable.querySelector("[data-vinyl-logo]");
   const status = turntable.querySelector("[data-turntable-status]");
+  const turntableCompany = turntable.querySelector("[data-turntable-company]");
+  const turntableRole = turntable.querySelector("[data-turntable-role]");
   const nowTrack = document.querySelector(".now-track");
   const recordChoices = Array.from(turntable.querySelectorAll(".vinyl-choice"));
   let isDraggingTonearm = false;
@@ -168,6 +170,12 @@ if (turntable) {
     vinyl.dataset.label = choice.dataset.label;
     if (vinylLogo && choice.dataset.logo) {
       vinylLogo.src = choice.dataset.logo;
+    }
+    if (turntableCompany) {
+      turntableCompany.textContent = choice.dataset.company;
+    }
+    if (turntableRole) {
+      turntableRole.textContent = choice.dataset.role;
     }
     if (nowTrack) {
       nowTrack.textContent = shouldPlay ? choice.dataset.nowPlaying : "Pick a record to explore my work";
