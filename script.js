@@ -227,6 +227,13 @@ if (experienceRecords.length > 0 && experiencePanels.length > 0) {
     record.setAttribute("aria-expanded", "true");
     panel.hidden = false;
     panel.classList.add("is-open");
+
+    window.requestAnimationFrame(() => {
+      panel.scrollIntoView({
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start",
+      });
+    });
   };
 
   experienceRecords.forEach((record) => {
