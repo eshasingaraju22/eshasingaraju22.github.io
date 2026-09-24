@@ -86,7 +86,9 @@ const turntable = document.querySelector("[data-turntable]");
 if (turntable) {
   const tonearm = turntable.querySelector(".tonearm");
   const vinyl = turntable.querySelector(".vinyl");
+  const vinylLogo = turntable.querySelector("[data-vinyl-logo]");
   const status = turntable.querySelector("[data-turntable-status]");
+  const nowTrack = document.querySelector(".now-track");
   const recordChoices = Array.from(turntable.querySelectorAll(".vinyl-choice"));
   let isDraggingTonearm = false;
   let draggedChoice = null;
@@ -94,7 +96,7 @@ if (turntable) {
   const setPlayback = (isPlaying) => {
     turntable.classList.toggle("is-playing", isPlaying);
     tonearm.setAttribute("aria-pressed", String(isPlaying));
-    status.textContent = isPlaying ? "Now spinning / 33 1/3 RPM" : "Place needle to play";
+    status.textContent = isPlaying ? "Now spinning / 33 1/3 RPM" : "Pick a record";
   };
 
   const cueTonearm = (event) => {
@@ -158,18 +160,27 @@ if (turntable) {
 
     recordChoices.forEach((recordChoice) => {
       const isSelected = recordChoice === choice;
-      recordChoice.classList.toggle("is-selected", isSelected);
+      recordChoice.classList.toggle("is-cued", isSelected);
       recordChoice.setAttribute("aria-pressed", String(isSelected));
     });
 
     vinyl.dataset.activeVinyl = choice.dataset.vinyl;
     vinyl.dataset.label = choice.dataset.label;
+    if (vinylLogo && choice.dataset.logo) {
+      vinylLogo.src = choice.dataset.logo;
+    }
+    if (nowTrack) {
+      nowTrack.textContent = shouldPlay ? choice.dataset.nowPlaying : "Pick a record to explore my work";
+    }
     tonearm.style.setProperty("--arm-angle", shouldPlay ? "315deg" : "280deg");
     setPlayback(shouldPlay);
   };
 
   recordChoices.forEach((choice) => {
-    choice.addEventListener("click", () => selectVinyl(choice));
+    choice.addEventListener("click", () => {
+      const shouldOpen = choice.getAttribute("aria-expanded") !== "true";
+      selectVinyl(choice, shouldOpen);
+    });
     choice.addEventListener("dragstart", (event) => {
       draggedChoice = choice;
       event.dataTransfer.effectAllowed = "copy";
@@ -191,7 +202,9 @@ if (turntable) {
   tonearm.addEventListener("drop", (event) => {
     event.preventDefault();
     tonearm.classList.remove("is-drop-target");
-    selectVinyl(draggedChoice, true);
+    if (draggedChoice) {
+      draggedChoice.click();
+    }
   });
 }
 
@@ -248,7 +261,7 @@ const previewContent = {
     description:
       "Some of the places I've spent my time lately, from internships to research, in Chapel Hill and beyond!",
     items: [],
-    href: "experience.html",
+    href: "index.html#experience",
     ctaClass: "preview-cta-experience",
   },
   writing: {

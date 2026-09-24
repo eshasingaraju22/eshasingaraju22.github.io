@@ -4,8 +4,8 @@ A colorful multi-page portfolio built with plain HTML, CSS, and JavaScript.
 
 ## Pages
 
-- `index.html` is the short home page.
-- `experience.html` is the resume-style experience page.
+- `index.html` is the homepage and interactive experience portfolio.
+- `experience.html` redirects older links to the homepage experience section.
 - `writing.html` is for DTH articles and other published work.
 - `out-and-about.html` is for speaking engagements, features, panels, and appearances.
 
@@ -13,7 +13,7 @@ A colorful multi-page portfolio built with plain HTML, CSS, and JavaScript.
 
 - Replace the placeholder copy on each page with your real bio, roles, articles, and events.
 - Add your real article links in `writing.html`.
-- Add your resume PDF or LinkedIn link in `experience.html`.
+- Update experience records and liner notes in `index.html`.
 - Add real event names, years, and links in `out-and-about.html`.
 - Update colors or wording in `style.css` if you want the brand to feel even more like you.
 
