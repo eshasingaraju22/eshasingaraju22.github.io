@@ -134,6 +134,13 @@ h1, h2, h3, p { margin-top: 0; }
 .experience-page-hero .page-hero-copy { max-width: 28ch; font-size: 1.14rem; }
 .experience-page-hero .label-disc { display: block; width: 86px; box-shadow: inset 0 0 0 9px var(--ink), inset 0 0 0 10px var(--groove), inset 0 0 0 19px var(--ink), inset 0 0 0 20px var(--groove); }
 .experience-page-hero .label-disc::before { width: 34px; margin: 25px auto; font-size: 0.48rem; }
+.writing-page-hero { grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr); align-items: center; padding: clamp(1.5rem, 2.6vw, 2.35rem) 0; }
+.writing-page-hero .page-title { max-width: none; margin-top: 0.7rem; font-size: clamp(3rem, 4.7vw, 4.7rem); line-height: 0.86; white-space: nowrap; }
+.writing-page-hero .page-title em { display: inline-block; margin-left: 0.06em; font-size: 1em; }
+.writing-hero-note { display: grid; grid-template-columns: minmax(0, 1fr) 78px; gap: 1.25rem; align-items: center; }
+.writing-page-hero .page-hero-copy { max-width: 49ch; margin: 0; font-size: 1.08rem; line-height: 1.18; }
+.writing-page-hero .label-disc { width: 78px; }
+.writing-page-hero .label-disc::before { width: 30px; margin: 23px auto; font-size: 0.44rem; }
 .label-disc { justify-self: end; width: 190px; aspect-ratio: 1; border: var(--line); border-radius: 50%; background: var(--ink); box-shadow: inset 0 0 0 19px var(--ink), inset 0 0 0 20px var(--groove), inset 0 0 0 39px var(--ink), inset 0 0 0 40px var(--groove); }
 .label-disc::before { content: "SIDE A"; display: grid; width: 62px; aspect-ratio: 1; margin: 64px auto; place-items: center; border: var(--line); border-radius: 50%; background: var(--tomato); font-family: var(--mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.05em; }
 .label-disc.notes-label::before { content: "NOTES"; background: var(--mist); }
@@ -246,6 +253,11 @@ h1, h2, h3, p { margin-top: 0; }
   .experience-hero-note { grid-template-columns: minmax(0, 1fr) 72px; gap: 0.8rem; }
   .experience-page-hero .label-disc { justify-self: end; width: 72px; }
   .experience-page-hero .label-disc::before { width: 28px; margin: 21px auto; font-size: 0.42rem; }
+  .writing-page-hero { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.75rem 0; }
+  .writing-page-hero .page-title { font-size: clamp(2.8rem, 12vw, 4rem); white-space: normal; }
+  .writing-hero-note { grid-template-columns: minmax(0, 1fr) 72px; gap: 0.8rem; }
+  .writing-page-hero .label-disc { justify-self: end; width: 72px; }
+  .writing-page-hero .label-disc::before { width: 28px; margin: 21px auto; font-size: 0.42rem; }
   .label-disc { justify-self: start; width: 120px; }
   .label-disc::before { margin: 29px auto; }
   .record-grid { height: 365px; }
