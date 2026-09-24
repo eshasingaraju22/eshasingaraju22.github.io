@@ -221,8 +221,14 @@ const experiencePanels = Array.from(document.querySelectorAll("[data-experience-
 
 if (experienceRecords.length > 0 && experiencePanels.length > 0) {
   const setExperience = (record) => {
+    const scrollPosition = { left: window.scrollX, top: window.scrollY };
     const key = record.dataset.experienceRecord;
     const shouldClose = record.getAttribute("aria-expanded") === "true";
+    const preserveScrollPosition = () => {
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ ...scrollPosition, behavior: "auto" });
+      });
+    };
 
     experienceRecords.forEach((item) => {
       item.classList.remove("is-selected");
@@ -236,6 +242,7 @@ if (experienceRecords.length > 0 && experiencePanels.length > 0) {
     });
 
     if (shouldClose) {
+      preserveScrollPosition();
       return;
     }
 
@@ -248,13 +255,7 @@ if (experienceRecords.length > 0 && experiencePanels.length > 0) {
     record.setAttribute("aria-expanded", "true");
     panel.hidden = false;
     panel.classList.add("is-open");
-
-    window.requestAnimationFrame(() => {
-      panel.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-        block: "start",
-      });
-    });
+    preserveScrollPosition();
   };
 
   experienceRecords.forEach((record) => {
