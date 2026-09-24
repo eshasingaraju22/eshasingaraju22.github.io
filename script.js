@@ -195,6 +195,45 @@ if (turntable) {
   });
 }
 
+const experienceRecords = Array.from(document.querySelectorAll("[data-experience-record]"));
+const experiencePanels = Array.from(document.querySelectorAll("[data-experience-panel]"));
+
+if (experienceRecords.length > 0 && experiencePanels.length > 0) {
+  const setExperience = (record) => {
+    const key = record.dataset.experienceRecord;
+    const shouldClose = record.getAttribute("aria-expanded") === "true";
+
+    experienceRecords.forEach((item) => {
+      item.classList.remove("is-selected");
+      item.setAttribute("aria-expanded", "false");
+    });
+
+    experiencePanels.forEach((panel) => {
+      panel.hidden = true;
+      panel.classList.remove("is-open");
+      panel.querySelectorAll("video").forEach((video) => video.pause());
+    });
+
+    if (shouldClose) {
+      return;
+    }
+
+    const panel = experiencePanels.find((item) => item.dataset.experiencePanel === key);
+    if (!panel) {
+      return;
+    }
+
+    record.classList.add("is-selected");
+    record.setAttribute("aria-expanded", "true");
+    panel.hidden = false;
+    panel.classList.add("is-open");
+  };
+
+  experienceRecords.forEach((record) => {
+    record.addEventListener("click", () => setExperience(record));
+  });
+}
+
 const previewContent = {
   experience: {
     overline: "Preview",

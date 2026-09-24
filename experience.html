@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Side A | Esha FM</title>
+    <title>On the Record | Esha FM</title>
     <meta name="description" content="Selected work, research, and experience from Esha Singaraju." />
     <link rel="icon" type="image/png" href="assets/finalfavicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400;75..125,600;75..125,700;75..125,800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css?v=20260908" />
+    <link rel="stylesheet" href="style.css?v=20260923-records" />
   </head>
   <body>
     <div class="page-shell">
@@ -25,37 +25,108 @@
       <main>
         <section class="page-hero reveal">
           <div><p class="eyebrow">01 / Side A</p><h1 class="page-title">On the<br /><em>record.</em></h1></div>
-          <div><p class="page-hero-copy">A selection of places I've learned, built, and asked better questions.</p><span class="label-disc" aria-hidden="true"></span></div>
+          <div><p class="page-hero-copy">A selection of places I've learned, built, and asked better questions. Pick a record to read the liner notes.</p><span class="label-disc" aria-hidden="true"></span></div>
         </section>
-        <section class="experience-stack">
-          <article class="experience-entry reveal">
-            <div class="experience-logo-frame"><img src="assets/wbd.jpg" alt="Warner Bros. Discovery logo" /></div>
+        <section class="experience-library" aria-labelledby="experience-library-title">
+          <div class="experience-library-heading reveal">
             <div>
-              <div class="experience-track"><p class="track-number">Track 01 / Upcoming</p><p class="role-meta">June 2026 - Present / New York, NY</p></div>
-              <h2>Incoming Product Management Intern</h2><p class="experience-company">HBO Max</p>
-              <p class="experience-description">Coming soon.</p><div class="experience-skills">Skills coming soon</div>
+              <p class="section-kicker">Selected experience</p>
+              <h2 id="experience-library-title">Pick a record</h2>
             </div>
-          </article>
-          <article class="experience-entry reveal">
-            <div class="experience-logo-frame"><img src="assets/creditkarma.png" alt="Credit Karma logo" /></div>
-            <div>
-              <div class="experience-track"><p class="track-number">Track 02 / Product Engineering</p><p class="role-meta">May 2025 - August 2025 / Charlotte, NC</p></div>
-              <h2>Product Engineering Intern</h2><p class="experience-company">Credit Karma</p>
-              <p class="experience-description">Worked on the credit cards team to improve the reliability of the rewards-ranking framework. I wrote SQL validation queries, built a dashboard to surface ranking errors across dates and categories, and created a daily Slack update that gave engineers and stakeholders a shared view of data-quality issues.</p><div class="experience-skills">SQL / data validation / dashboards / automation</div>
-            </div>
-          </article>
-          <article class="experience-entry reveal">
-            <div class="experience-logo-frame"><img src="assets/irmii.jpeg" alt="UNC IRMII logo" /></div>
-            <div>
-              <div class="experience-track"><p class="track-number">Track 03 / Research</p><p class="role-meta">May 2024 - Present / Chapel Hill, NC</p></div>
-              <h2>Undergraduate Student Researcher</h2><p class="experience-company">UNC IRMII</p>
-              <p class="experience-description">I research how post-disaster aid is distributed after major floods, with a focus on where federal recovery funding may fall short. I built machine-learning models and a Python pipeline for 500,000+ disaster-loan records, then developed an interactive dashboard for exploring aid patterns and community resilience.</p><div class="experience-skills">Python / machine learning / GIS / data pipelines</div>
-            </div>
-          </article>
+            <p>Click once to open. Click again to put it back.</p>
+          </div>
+
+          <div class="experience-records reveal" aria-label="Experience records">
+            <button class="career-record is-selected" type="button" data-experience-record="hbo" aria-expanded="true" aria-controls="experience-hbo">
+              <span class="career-vinyl career-vinyl-hbo" aria-hidden="true">
+                <span class="career-vinyl-label"><img src="assets/hbo-max-logo.png" alt="" /></span>
+              </span>
+              <span class="career-record-meta"><span>Track 01</span><strong>HBO Max</strong><small>Product Management</small></span>
+            </button>
+            <button class="career-record" type="button" data-experience-record="credit-karma" aria-expanded="false" aria-controls="experience-credit-karma">
+              <span class="career-vinyl career-vinyl-ck" aria-hidden="true">
+                <span class="career-vinyl-label"><img src="assets/credit-karma-mark.png" alt="" /></span>
+              </span>
+              <span class="career-record-meta"><span>Track 02</span><strong>Credit Karma</strong><small>Product Engineering</small></span>
+            </button>
+            <button class="career-record" type="button" data-experience-record="irmii" aria-expanded="false" aria-controls="experience-irmii">
+              <span class="career-vinyl career-vinyl-irmii" aria-hidden="true">
+                <span class="career-vinyl-label"><img src="assets/irmii.jpeg" alt="" /></span>
+              </span>
+              <span class="career-record-meta"><span>Track 03</span><strong>UNC IRMII</strong><small>Research</small></span>
+            </button>
+          </div>
+
+          <div class="experience-panels" aria-live="polite">
+            <article class="experience-panel is-open" id="experience-hbo" data-experience-panel="hbo">
+              <figure class="experience-panel-media experience-panel-video">
+                <video controls playsinline preload="metadata" poster="assets/hbo-shorts-poster.png" aria-label="HBO Max Shorts mobile experience">
+                  <source src="assets/hbo-shorts.m4v" type="video/mp4" />
+                  Your browser does not support embedded video.
+                </video>
+                <figcaption>HBO Max Shorts / mobile experience</figcaption>
+              </figure>
+              <div class="experience-panel-copy">
+                <div class="experience-track"><p class="track-number">Track 01 / Product Management</p><p class="role-meta">May 2026 - August 2026 / New York, NY</p></div>
+                <h2>Product Management Intern</h2>
+                <p class="experience-company">HBO Max · Warner Bros. Discovery</p>
+                <p class="experience-summary">On the Watch Experience team, I moved between discovery, playback, and launch readiness - turning ambiguous user problems into requirements, prototypes, and measurable product recommendations.</p>
+                <ul class="experience-highlights">
+                  <li>Built an AI workflow that researched 100+ web sources, validated episode metadata, scored candidate moments, and matched them to catalog data, surfacing 600+ clips for editorial review.</li>
+                  <li>Translated 5+ competitive analyses into 15 user stories and 8 product workflows for an AI-powered in-player experience, then led a cross-functional sprint from requirements through prototype.</li>
+                  <li>Ran UAT across 3 platforms for 6+ launches, identifying launch-blocking defects and validating fixes with engineering.</li>
+                  <li>Defined KPIs and analyzed Video-in-Browse engagement, producing recommendations projected to drive $1.2M in annual impact and increase Hours Per Subscriber by 0.5%.</li>
+                </ul>
+                <div class="experience-metrics" aria-label="HBO Max impact">
+                  <span><strong>100+</strong> sources</span><span><strong>600+</strong> clips</span><span><strong>6+</strong> launches</span><span><strong>$1.2M</strong> projected impact</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="experience-panel" id="experience-credit-karma" data-experience-panel="credit-karma" hidden>
+              <figure class="experience-panel-media experience-panel-image">
+                <img src="assets/credit-karma-rewards.png" alt="Credit Karma Cards Optimizer showing credit-card rewards categories" />
+                <figcaption>Credit Karma Cards Optimizer</figcaption>
+              </figure>
+              <div class="experience-panel-copy">
+                <div class="experience-track"><p class="track-number">Track 02 / Product Engineering</p><p class="role-meta">May 2025 - August 2025 / Charlotte, NC</p></div>
+                <h2>Product Engineering Intern</h2>
+                <p class="experience-company">Intuit Credit Karma</p>
+                <p class="experience-summary">Credit-card rewards data arrived through a third-party manual workflow, so a 2x category could accidentally appear as 24x. I built the checks, resolution paths, and alerts that caught those failures before they reached members.</p>
+                <ul class="experience-highlights">
+                  <li>Redesigned the credit-card ranking framework with automated data-quality checks, protecting 20M+ members from faulty product data and improving partner-data accuracy by 15%.</li>
+                  <li>Gathered requirements from analysts and built resolution workflows that prevented 4 major incidents in 2 months while freeing roughly 3 months of engineering capacity each year.</li>
+                  <li>Built an LLM-assisted resolution workflow using SQL analyses of live and historical listings to flag ranking discrepancies, improving recommendation accuracy by 25%.</li>
+                </ul>
+                <div class="experience-metrics" aria-label="Credit Karma impact">
+                  <span><strong>20M+</strong> members protected</span><span><strong>15%</strong> partner accuracy</span><span><strong>4</strong> incidents prevented</span><span><strong>25%</strong> recommendation accuracy</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="experience-panel" id="experience-irmii" data-experience-panel="irmii" hidden>
+              <figure class="experience-panel-media experience-panel-image experience-panel-research">
+                <img src="assets/futureofinsurance.jpg" alt="Esha presenting research on post-flood financial relief" />
+                <figcaption>Post-flood financial relief research</figcaption>
+              </figure>
+              <div class="experience-panel-copy">
+                <div class="experience-track"><p class="track-number">Track 03 / Research</p><p class="role-meta">May 2024 - Present / Chapel Hill, NC</p></div>
+                <h2>Undergraduate Student Researcher</h2>
+                <p class="experience-company">UNC Institute for Risk Management and Insurance Innovation</p>
+                <p class="experience-summary">I study how post-disaster aid is distributed after major floods, with a focus on where federal recovery funding may fall short.</p>
+                <ul class="experience-highlights">
+                  <li>Built machine-learning models and a Python pipeline for more than 500,000 disaster-loan records.</li>
+                  <li>Developed an interactive dashboard for exploring aid patterns and community resilience.</li>
+                  <li>Translated technical findings into accessible research for academic and public audiences.</li>
+                </ul>
+                <div class="experience-skills">Python / machine learning / GIS / data pipelines</div>
+              </div>
+            </article>
+          </div>
         </section>
       </main>
       <footer class="site-footer"><span>Side A / Selected work</span><a href="mailto:eshasingaraju@gmail.com">Say hello</a></footer>
     </div>
-    <script src="script.js?v=20260908"></script>
+    <script src="script.js?v=20260923-records"></script>
   </body>
 </html>
