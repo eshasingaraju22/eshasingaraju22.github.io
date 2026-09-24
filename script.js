@@ -99,21 +99,18 @@ if (turntable) {
 
   const cueTonearm = (event) => {
     const tableRect = turntable.getBoundingClientRect();
-    const pivotX = tableRect.right - tableRect.width * 0.09;
-    const pivotY = tableRect.top + tableRect.height * 0.13;
+    const pivotX = tableRect.left + tonearm.offsetLeft + tonearm.offsetWidth;
+    const pivotY = tableRect.top + tonearm.offsetTop + tonearm.offsetHeight / 2;
     const dx = event.clientX - pivotX;
     const dy = event.clientY - pivotY;
     const rawAngle = (Math.atan2(-dy, -dx) * 180) / Math.PI;
     const normalizedAngle = rawAngle < 0 ? rawAngle + 360 : rawAngle;
     const angle = Math.min(345, Math.max(270, normalizedAngle));
     const recordRect = vinyl.getBoundingClientRect();
-    const needleLength = tonearm.offsetWidth;
-    const radians = (angle * Math.PI) / 180;
-    const needleX = pivotX - needleLength * Math.cos(radians);
-    const needleY = pivotY - needleLength * Math.sin(radians);
     const recordX = recordRect.left + recordRect.width / 2;
     const recordY = recordRect.top + recordRect.height / 2;
-    const isOnRecord = Math.hypot(needleX - recordX, needleY - recordY) < recordRect.width / 2;
+    const isOnRecord =
+      Math.hypot(event.clientX - recordX, event.clientY - recordY) <= recordRect.width * 0.52;
 
     tonearm.style.setProperty("--arm-angle", `${angle.toFixed(1)}deg`);
     setPlayback(isOnRecord);
@@ -136,6 +133,7 @@ if (turntable) {
       return;
     }
 
+    cueTonearm(event);
     isDraggingTonearm = false;
     tonearm.releasePointerCapture(event.pointerId);
   };
@@ -148,7 +146,9 @@ if (turntable) {
     }
 
     event.preventDefault();
-    setPlayback(!turntable.classList.contains("is-playing"));
+    const shouldPlay = !turntable.classList.contains("is-playing");
+    tonearm.style.setProperty("--arm-angle", shouldPlay ? "315deg" : "280deg");
+    setPlayback(shouldPlay);
   });
 
   const selectVinyl = (choice, shouldPlay = false) => {
@@ -164,6 +164,7 @@ if (turntable) {
 
     vinyl.dataset.activeVinyl = choice.dataset.vinyl;
     vinyl.dataset.label = choice.dataset.label;
+    tonearm.style.setProperty("--arm-angle", shouldPlay ? "315deg" : "280deg");
     setPlayback(shouldPlay);
   };
 
