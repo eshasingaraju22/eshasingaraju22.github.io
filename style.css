@@ -144,7 +144,7 @@ h1, h2, h3, p { margin-top: 0; }
 .career-record:hover .career-vinyl-stage, .career-record:focus-visible .career-vinyl-stage { transform: translateY(-8px); box-shadow: 10px 13px 0 rgba(21, 32, 59, 0.3); }
 .career-record:hover .career-vinyl, .career-record:focus-visible .career-vinyl { filter: saturate(1.08); }
 .career-record:focus-visible { outline: 2px solid var(--ink); outline-offset: 7px; }
-.career-record.is-selected .career-vinyl-stage { transform: translateY(-12px); box-shadow: 11px 14px 0 var(--ink); }
+.career-record.is-selected .career-vinyl-stage { transform: translateY(-12px); box-shadow: none; }
 .career-record.is-selected .career-vinyl { animation: career-record-spin 8s linear infinite; }
 .career-record-meta { display: grid; justify-items: center; }
 .career-record-meta > span, .career-record-meta small { font-family: var(--mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
